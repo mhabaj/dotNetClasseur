@@ -9,14 +9,14 @@ namespace Bacchus.Model
     class Marque
     {
         public string Name { get; set; }
-       
-        
+
+
         public Marque(string MarqueName)
         {
             this.Name = MarqueName;
         }
 
-       
+
         public override bool Equals(object Marque)
         {
             if (Marque == null)
@@ -29,7 +29,7 @@ namespace Bacchus.Model
             }
             return (Name == ((Marque)Marque).Name);
         }
-   
+
 
         public override int GetHashCode()
         {
@@ -51,6 +51,5 @@ namespace Bacchus.Model
         {
             return Name;
         }
-
     }
 }

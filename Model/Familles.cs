@@ -7,24 +7,28 @@ using System.Threading.Tasks;
 
 namespace Bacchus.Model
 {
-    class Familles : IEnumerable
+    /// <summary>
+    /// Class Familles, which integrates the IEnumerable interface to make the class browsable
+    /// </summary>
+    class Familles :IEnumerable
     {
         public List<Famille> ListFamilles { get; set; }
         public int TotalSize { get { return ListFamilles.Count; } }
-       
 
+        /// <summary>
+        /// default constructor of the Familles class. (instantiates the family List)
+        /// </summary>
         public Familles()
         {
             ListFamilles = new List<Famille>();
         }
 
-       
         public void AddFamille(Famille Famille)
         {
             if (!IsFamille(Famille))
                 ListFamilles.Add(Famille);
         }
-              
+
         public bool IsFamille(Famille Famille)
         {
             foreach (var CurrentFamille in ListFamilles)

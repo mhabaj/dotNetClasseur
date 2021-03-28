@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{794EA797-C71B-4E1F-8B34-340E357C4B21}</ProjectGuid>
+    <ProjectGuid>{0B5B50B9-41C8-42AA-85DA-8D6197345369}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Bacchus</RootNamespace>
     <AssemblyName>Bacchus</AssemblyName>
@@ -37,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -65,11 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerDAO\ArticleDao.cs" />
-    <Compile Include="ControllerDAO\DAO.cs" />
-    <Compile Include="ControllerDAO\FamilleDao.cs" />
-    <Compile Include="ControllerDAO\MarqueDao.cs" />
-    <Compile Include="ControllerDAO\SousFamilleDao.cs" />
+    <Compile Include="ControllerDAO\DaoSousFamille.cs" />
+    <Compile Include="ControllerDAO\DaoMarque.cs" />
+    <Compile Include="ControllerDAO\DaoFamille.cs" />
+    <Compile Include="ControllerDAO\DaoArticle.cs" />
+    <Compile Include="ControllerDAO\Dao.cs" />
+    <Compile Include="Controller\ParseurCsv.cs" />
     <Compile Include="FormImport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,12 +85,12 @@
     </Compile>
     <Compile Include="Model\Article.cs" />
     <Compile Include="Model\Articles.cs" />
-    <Compile Include="Model\Famille.cs" />
-    <Compile Include="Model\Familles.cs" />
-    <Compile Include="Model\Marque.cs" />
-    <Compile Include="Model\Marques.cs" />
-    <Compile Include="Model\SousFamille.cs" />
     <Compile Include="Model\SousFamilles.cs" />
+    <Compile Include="Model\SousFamille.cs" />
+    <Compile Include="Model\Marques.cs" />
+    <Compile Include="Model\Marque.cs" />
+    <Compile Include="Model\Familles.cs" />
+    <Compile Include="Model\Famille.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormImport.resx">
@@ -130,10 +131,10 @@
     <PropertyGroup>
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
     </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
-    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
   <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
-  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

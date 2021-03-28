@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bacchus.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,11 @@ namespace Bacchus
 {
     public partial class FormImport : Form
     {
+        private ParseurCsv CsvParseur;
         public FormImport()
         {
             InitializeComponent();
+            CsvParseur = new ParseurCsv();
         }
 
         private void FormImport_Load(object sender, EventArgs e)
@@ -23,10 +26,14 @@ namespace Bacchus
 
         }
 
+        /// <summary>
+        /// button allowing to import the csv file and to fill the textbox field with the name of the imported file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
+            var FilePath = string.Empty;
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -38,38 +45,31 @@ namespace Bacchus
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-                    textBox1.Text = Path.GetFileName(filePath);
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        fileContent = reader.ReadToEnd();
-
-                    }
+                    FilePath = openFileDialog.FileName;
+                    CsvParseur.FilePath = FilePath;
                 }
             }
+            textBox1.Text = Path.GetFileName(FilePath);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Codage du bouton d'intégration par écrasement.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
+            CsvParseur.ImportData(true, ProgressBar);
+        }
 
+        /// <summary>
+        /// Codage du bouton d'intégration par ajout.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CsvParseur.ImportData(false, ProgressBar);
         }
     }
 }

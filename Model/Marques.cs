@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Bacchus.Model
 {
-    class Marques : IEnumerable
+    class Marques :IEnumerable
     {
         public List<Marque> ListMarques { get; set; }
         public int TotalSize { get { return ListMarques.Count; } }
 
-      
+
         public Marques()
         {
             ListMarques = new List<Marque>();
         }
 
-       
+
         public void AjouterMarque(Marque Marque)
         {
             if (!IsMarque(Marque))
@@ -41,8 +41,5 @@ namespace Bacchus.Model
         {
             return ((IEnumerable)ListMarques).GetEnumerator();
         }
-
-        
-      
     }
 }
