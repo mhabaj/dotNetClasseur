@@ -34,7 +34,7 @@ namespace Bacchus.Controller
 
             if(IntegrationMode.Equals(true))
             {
-                Dao DAO = new Dao();
+                DaoController DAO = new DaoController();
                 DAO.EmptyDatabase();
             }
         }

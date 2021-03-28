@@ -65,7 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerDAO\DAO.cs" />
+    <Compile Include="ControllerDAO\DAOController.cs" />
     <Compile Include="ControllerDAO\DaoArticle.cs" />
     <Compile Include="ControllerDAO\DaoFamille.cs" />
     <Compile Include="ControllerDAO\DaoMarque.cs" />
