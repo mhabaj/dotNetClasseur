@@ -14,7 +14,7 @@ namespace Bacchus.Model
     class Articles :IEnumerable
     {
         public List<Article> ListArticles { get; set; }
-        public int Count { get { return ListArticles.Count; } }
+        public int TotalSize { get { return ListArticles.Count; } }
 
         /// <summary>
         /// default constructor of the Articles class.

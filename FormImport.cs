@@ -46,7 +46,7 @@ namespace Bacchus
                 {
                     //Get the path of specified file
                     FilePath = openFileDialog.FileName;
-                    CsvParseur.FilePath = FilePath;
+                    CsvParseur.Filepath = FilePath;
                 }
             }
             textBox1.Text = Path.GetFileName(FilePath);
@@ -59,7 +59,7 @@ namespace Bacchus
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            CsvParseur.ImportData(true, ProgressBar);
+            CsvParseur.ImportCsvFile(true, ProgressBar);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Bacchus
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-            CsvParseur.ImportData(false, ProgressBar);
+            CsvParseur.ImportCsvFile(false, ProgressBar);
         }
     }
 }

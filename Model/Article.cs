@@ -28,7 +28,7 @@ namespace Bacchus.Model
         /// <param name="MarqueArticle"></param>
         /// <param name="PrixArticle"></param>
         /// <param name="QuantiteArticle"></param>
-        public Article(string RefArticle, string DescrArticle, SousFamille SsFamille, Marque MarqueArticle, double PrixArticle, int QuantiteArticle)
+        public Article(string RefArticle, string DescrArticle, SousFamille SsFamille, Marque MarqueArticle, double PrixArticle, int QuantiteArticle = 1)
         {
             ReferenceArticle = RefArticle;
             Description = DescrArticle;

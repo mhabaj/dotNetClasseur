@@ -19,7 +19,7 @@ namespace Bacchus.Model
         }
 
 
-        public void AjouterMarque(Marque Marque)
+        public void AddMarque(Marque Marque)
         {
             if (!IsMarque(Marque))
                 ListMarques.Add(Marque);
