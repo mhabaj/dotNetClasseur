@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Bacchus.Model
 {
+    /// <summary>
+    /// Marque class contains the methods to manage the Marque objects.
+    /// </summary>
     class Marque
     {
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        /// Confort constructor of the class, takes MarqueName in param and instantiates the object.
         /// </summary>
         /// <param name="MarqueName"></param>
         public Marque(string MarqueName)
