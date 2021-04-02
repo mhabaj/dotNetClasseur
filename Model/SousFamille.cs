@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Bacchus.Model
 {
     /// <summary>
-    /// 
+    /// SousFamille class, subclass of Famille.
     /// </summary>
     class SousFamille : Famille
     {
         /// <summary>
-        /// 
+        /// Famille attribute of the SousFamille class.
         /// </summary>
         public Famille Famille { get; set; }
 

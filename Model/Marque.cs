@@ -10,11 +10,20 @@ namespace Bacchus.Model
     {
         public string Name { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="MarqueName"></param>
         public Marque(string MarqueName)
         {
             this.Name = MarqueName;
         }
 
+        /// <summary>
+        /// Redefinition of the equals method.
+        /// </summary>
+        /// <param name="Marque"></param>
+        /// <returns></returns>
         public override bool Equals(object Marque)
         {
             if (Marque == null)
@@ -28,12 +37,19 @@ namespace Bacchus.Model
             return (Name == ((Marque)Marque).Name);
         }
 
-
+        /// <summary>
+        /// Redefinition of the gethashcode method.
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return 539060726 + EqualityComparer<string>.Default.GetHashCode(Name);
         }
 
+        /// <summary>
+        /// Redefinition of the ToString method.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Name;

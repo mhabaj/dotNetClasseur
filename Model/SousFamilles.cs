@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Bacchus.Model
 {
     /// <summary>
-    /// 
+    /// SousFamilles class, subclass of Familles
     /// </summary>
     class SousFamilles : Familles
     {
         /// <summary>
-        /// 
+        /// default constructor of the class, does nothing.
         /// </summary>
         public SousFamilles()
         {
@@ -20,7 +20,7 @@ namespace Bacchus.Model
         }
 
         /// <summary>
-        /// 
+        /// Method to add a SousFamille to the Famille.
         /// </summary>
         /// <param name="SousFamilleToAdd"></param>
         public void AddSousFamille(SousFamille SousFamilleToAdd)
