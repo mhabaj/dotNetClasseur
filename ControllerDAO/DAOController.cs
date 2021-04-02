@@ -8,14 +8,24 @@ using System.Threading.Tasks;
 
 namespace Bacchus.ControllerDAO
 {
+    /// <summary>
+    /// DAO Controller class, mother class of all the other DAO classes, concentrates the general méthods of all the rows of the database.
+    /// </summary>
     class DaoController
     {
-        private readonly string DatabaseFilePath = @"URI=file:..\..\Bacchus.SQLite";
+        private readonly string DatabaseFilePath = @"URI=file:..\..\Bacchus.SQLite"; //path of the SQLite database.
 
+        /// <summary>
+        /// default constructor of the class, does nothing.
+        /// </summary>
         public DaoController()
         {
         }
 
+        /// <summary>
+        /// Method the create a connection to the database.
+        /// </summary>
+        /// <returns></returns>
         public SQLiteConnection GetSqLiteConnection()
         {
             SQLiteConnection DbConnection = new SQLiteConnection(DatabaseFilePath);//connects to the database
@@ -57,7 +67,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// 
+        /// Method to find the reference of any table and collumn name and return it(int).
         /// </summary>
         /// <param name="Name"></param>
         /// <param name="ColumnName"></param>
@@ -98,7 +108,7 @@ namespace Bacchus.ControllerDAO
                             {
                                 if (!ResultSet.IsDBNull(0))
                                 {
-                                    Id = ResultSet.GetInt32(0); //we read the data and paste it into the Id var
+                                    Id = ResultSet.GetInt32(0); //we read the data and paste it into the Id variable.
                                 }
                             }
                         }
@@ -117,7 +127,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// 
+        /// Method to find the "SousFamille" using its Famille's Reference(Id) and return the concerned list of SousFamille References(ids).
         /// </summary>
         /// <param name="IdFamille"></param>
         /// <returns></returns>
@@ -162,7 +172,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "SousFamille" using its Reference(Id)
+        /// Method to find the "SousFamille" using its Reference(Id) and return the concerned SousFamille Object.
         /// </summary>
         /// <param name="Reference"></param>
         /// <returns></returns>
@@ -198,7 +208,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "Famille" using its Reference(Id)
+        /// Method to find the "Famille" using its Reference(Id) and return the Famille object concerned.
         /// </summary>
         /// <param name="Reference"></param>
         /// <returns></returns>
@@ -234,7 +244,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "Marque" using its Reference(Id)
+        /// Method to find the "Marque" using its Reference(Id) and return the Marque object concerned.
         /// </summary>
         /// <param name="Reference"></param>
         /// <returns></returns>

@@ -10,11 +10,19 @@ namespace Bacchus.ControllerDAO
 {
     class DaoArticle : DaoController
     {
+        /// <summary>
+        /// Default constructor of the class, does nothing.
+        /// </summary>
         public DaoArticle()
         {
 
         }
 
+        /// <summary>
+        /// Method that returns the quantity of articles in the database.
+        /// </summary>
+        /// <param name="idArticle"></param>
+        /// <returns></returns>
         public int GetQuantite(string idArticle)
         {
             int Quantity = 0;
@@ -49,7 +57,10 @@ namespace Bacchus.ControllerDAO
             return Quantity;
         }
 
-
+        /// <summary>
+        /// Method to add an Artile to the database.
+        /// </summary>
+        /// <param name="ArticleToAdd"></param>
         public void AddArticle(Article ArticleToAdd)
         {
             using (var Connection = GetSqLiteConnection())
@@ -93,8 +104,10 @@ namespace Bacchus.ControllerDAO
             }
         }
 
-
-
+        /// <summary>
+        /// Method to delete an Article from the database by giving its reference in parameter.
+        /// </summary>
+        /// <param name="RefArticleToRemove"></param>
         public void RemoveArticleByRef(string RefArticleToRemove)
         {
 
@@ -124,6 +137,10 @@ namespace Bacchus.ControllerDAO
 
         }
 
+        /// <summary>
+        /// Method that returns a Articles object which is a list of all the Article of the database.
+        /// </summary>
+        /// <returns></returns>
         public Articles ListAllArticles()
         {
             Articles TmpArticles = new Articles();
@@ -156,8 +173,11 @@ namespace Bacchus.ControllerDAO
             }
             return null;
         }
-
-
+        
+        /// <summary>
+        /// Method the update and article of the database by giving another in parameter.
+        /// </summary>
+        /// <param name="Article"></param>
         public void ModifyArticle(Article Article)
         {
             using (var Connection = GetSqLiteConnection())

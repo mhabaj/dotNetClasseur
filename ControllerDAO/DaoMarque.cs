@@ -8,15 +8,23 @@ using System.Threading.Tasks;
 
 namespace Bacchus.ControllerDAO
 {
+    /// <summary>
+    /// DAO class of for the Marque object, allows us to interact with the database (related to the Marque row).
+    /// </summary>
     class DaoMarque : DaoController
     {
-
-
+        /// <summary>
+        /// default constructor of the class. Does nothing.
+        /// </summary>
         public DaoMarque()
         {
 
         }
 
+        /// <summary>
+        /// method to add a Marque in the database at the row concerned. (Name in parameter)
+        /// </summary>
+        /// <param name="Name"></param>
         public void AddMarque(string Name)
         {
             if (FindReference(Name, "RefMarque", "Marques") == 0)
@@ -45,6 +53,11 @@ namespace Bacchus.ControllerDAO
                 }
             }
         }
+
+        /// <summary>
+        /// method to delete a Marque from the the database by giving its ReferenceMarque(id) into the parameters.
+        /// </summary>
+        /// <param name="ReferenceMarque"></param>
         private void RemoveArticleByMarque(int ReferenceMarque)
         {
             using (var Connection = GetSqLiteConnection())
@@ -71,9 +84,13 @@ namespace Bacchus.ControllerDAO
             }
         }
 
+        /// <summary>
+        /// method to delete a Marque from the database using its Name.
+        /// </summary>
+        /// <param name="Name"></param>
         public void RemoveMarqueByName(string Name)
         {
-            // Delete les articles qui ont la marque passée en paramètre
+            // Delete the articles containing the marque in them.
             RemoveArticleByMarque(FindReference(Name, "RefMarque", "Marques"));
             using (var Connection = GetSqLiteConnection())
             {
@@ -99,7 +116,10 @@ namespace Bacchus.ControllerDAO
             }
         }
 
-
+        /// <summary>
+        /// method to get all the Marques of the database and return it as a List of Marque (Marques object)
+        /// </summary>
+        /// <returns></returns>
         public Marques ListAllMarques()
         {
             Marques TmpMarques = new Marques();
@@ -130,6 +150,11 @@ namespace Bacchus.ControllerDAO
             return TmpMarques;
         }
 
+        /// <summary>
+        /// Method to update the values of a Marque in the database.
+        /// </summary>
+        /// <param name="CurrentName"></param>
+        /// <param name="NewName"></param>
         public void ModifyMarque(string CurrentName, string NewName)
         {
             using (var Connection = GetSqLiteConnection())

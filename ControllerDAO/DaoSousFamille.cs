@@ -8,15 +8,23 @@ using System.Threading.Tasks;
 
 namespace Bacchus.ControllerDAO
 {
+    /// <summary>
+    /// DataAccessObject class for the SousFamille class, allows us to interact with the database(everything related to the SousFamille row more precisely) through the functions available here.
+    /// </summary>
     class DaoSousFamille : DaoController
     {
-
+        /// <summary>
+        /// default constructor of the class, does nothing.
+        /// </summary>
         public DaoSousFamille()
         {
 
         }
 
-
+        /// <summary>
+        /// Method to insert a SousFamille into the database by giving a SousFamille in parameter.
+        /// </summary>
+        /// <param name="SousFamilleToAdd"></param>
         public void AddSousFamille(SousFamille SousFamilleToAdd)
         {
             if (FindReference(SousFamilleToAdd.Name, "RefSousFamille", "SousFamilles") == 0)
@@ -48,6 +56,11 @@ namespace Bacchus.ControllerDAO
             }
 
         }
+
+        /// <summary>
+        /// Method to delete a SousFamille from the database by giving its name in parameter.
+        /// </summary>
+        /// <param name="Name"></param>
         public void RemoveSousFamilleByName(string Name)
         {
             int RefSousFamille = FindReference(Name, "RefSousFamille", "SousFamilles");
@@ -76,7 +89,10 @@ namespace Bacchus.ControllerDAO
             }
         }
 
-
+        /// <summary>
+        /// Method to get all the SousFamilles into a SousFamilles object which is a list of SousFamille. (from the database)
+        /// </summary>
+        /// <returns></returns>
         public SousFamilles ListAllSousFamilles()
         {
             SousFamilles SousFamilles = new SousFamilles();
@@ -108,6 +124,12 @@ namespace Bacchus.ControllerDAO
             return SousFamilles;
         }
 
+        /// <summary>
+        /// Method to update a SousFamille of the database.
+        /// </summary>
+        /// <param name="CurrentName"></param>
+        /// <param name="NewName"></param>
+        /// <param name="NewFamille"></param>
         public void ModifySousFamille(string CurrentName, string NewName, Famille NewFamille)
         {
             using (var Connection = GetSqLiteConnection())
@@ -136,7 +158,10 @@ namespace Bacchus.ControllerDAO
             }
         }
 
-
+        /// <summary>
+        /// Method the delete an Article from the database by giving the Reference(id) of his SousFamille.
+        /// </summary>
+        /// <param name="ReferenceSousFamille"></param>
         private void RemoveArticleBySousFamille(int ReferenceSousFamille)
         {
             using (var Connection = GetSqLiteConnection())
