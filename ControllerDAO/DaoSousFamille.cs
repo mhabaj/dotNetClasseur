@@ -29,8 +29,8 @@ namespace Bacchus.ControllerDAO
                     {
                         using (var Query = new SQLiteCommand(Connection))
                         {
-                            Query.CommandText = "INSERT INTO SousFamilles VALUES(NULL,@Reference,@Name)";
-                            Query.Parameters.AddWithValue("@Reference", TmpRefFamille);
+                            Query.CommandText = "INSERT INTO SousFamilles VALUES(NULL,@RefFamille,@Name)";
+                            Query.Parameters.AddWithValue("@RefFamille", TmpRefFamille);
                             Query.Parameters.AddWithValue("@Name", SousFamilleToAdd.Name);
                             Query.Prepare();
                             Query.ExecuteNonQuery();

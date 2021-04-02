@@ -12,7 +12,6 @@ namespace Bacchus.Model
         public List<Marque> ListMarques { get; set; }
         public int TotalSize { get { return ListMarques.Count; } }
 
-
         public Marques()
         {
             ListMarques = new List<Marque>();

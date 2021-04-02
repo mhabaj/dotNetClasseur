@@ -10,12 +10,10 @@ namespace Bacchus.Model
     {
         public string Name { get; set; }
 
-
         public Marque(string MarqueName)
         {
             this.Name = MarqueName;
         }
-
 
         public override bool Equals(object Marque)
         {
@@ -35,17 +33,6 @@ namespace Bacchus.Model
         {
             return 539060726 + EqualityComparer<string>.Default.GetHashCode(Name);
         }
-
-        public static bool operator ==(Marque left, Marque right)
-        {
-            return EqualityComparer<Marque>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(Marque left, Marque right)
-        {
-            return !(left == right);
-        }
-
 
         public override string ToString()
         {

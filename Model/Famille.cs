@@ -58,28 +58,6 @@ namespace Bacchus.Model
             return 539060726 + EqualityComparer<string>.Default.GetHashCode(Name);
         }
 
-        /// <summary>
-        /// redefinition of the == operator in order to compare 2 family objects
-        /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
-        public static bool operator ==(Famille left, Famille right)
-        {
-            return EqualityComparer<Famille>.Default.Equals(left, right);
-        }
-
-        /// <summary>
-        /// redefinition of the != operator.
-        /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
-        public static bool operator !=(Famille left, Famille right)
-        {
-            return !(left == right);
-        }
-
         public override string ToString()
         {
             return Name;

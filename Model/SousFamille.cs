@@ -50,11 +50,7 @@ namespace Bacchus.Model
         /// <returns></returns>
         public override int GetHashCode()
         {
-            int hashCode = 1081318270;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Famille>.Default.GetHashCode(Famille);
-            return hashCode;
+            return base.GetHashCode();
         }
 
         /// <summary>
@@ -66,26 +62,5 @@ namespace Bacchus.Model
             return base.ToString() + "..............................." + Famille.ToString();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
-        public static bool operator ==(SousFamille left, SousFamille right)
-        {
-            return EqualityComparer<SousFamille>.Default.Equals(left, right);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
-        public static bool operator !=(SousFamille left, SousFamille right)
-        {
-            return !(left == right);
-        }
     }
 }

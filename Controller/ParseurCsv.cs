@@ -112,6 +112,7 @@ namespace Bacchus.Controller
             try
             {
                 var CsvFile = new StringBuilder();
+
                 var Categories = string.Format("{0};{1};{2};{3};{4};{5}", "Description", "Ref", "Marque", "Famille", "Sous-Famille", "Prix H.T.");
                 CsvFile.AppendLine(Categories);
                 Articles tmpArticles = new DaoArticle().ListAllArticles();

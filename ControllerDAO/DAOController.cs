@@ -33,7 +33,11 @@ namespace Bacchus.ControllerDAO
                 string SqlToExecute = "DELETE FROM Articles;" +
                                  " DELETE FROM Familles;" +
                                  " DELETE FROM SousFamilles;" +
-                                 " DELETE FROM Marques";
+                                 " DELETE FROM Marques;" +
+                                 "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME = 'Familles';" +
+                                 "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME = 'Articles';" +
+                                 "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME = 'SousFamilles';" +
+                                 "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME = 'Marques'";
                 using (SQLiteCommand Query = new SQLiteCommand(SqlToExecute, Connection))
                 {
                     try
