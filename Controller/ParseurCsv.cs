@@ -63,7 +63,7 @@ namespace Bacchus.Controller
                             Marque Marque = new Marque(Separator[2]);
                             Marques.AddMarque(Marque);
                             SousFamille SousFamille = new SousFamille(Separator[4], Famille);
-                            SousFamilles.AddFamille(SousFamille);
+                            SousFamilles.AddSousFamille(SousFamille);
                             Article Article = new Article(Separator[1], Separator[0], SousFamille, Marque, Convert.ToDouble(Separator[5]));
                             Articles.AddArticle(Article);
                         }
@@ -124,7 +124,7 @@ namespace Bacchus.Controller
                         var Adding = string.Format("{0};{1};{2};{3};{4};{5}", Article.Description, Article.ReferenceArticle, Article.Marque.Name, Article.SousFamille.Famille.Name, Article.SousFamille.Name, Article.Prix);
                         CsvFile.AppendLine(Adding);
                     }
-                    File.WriteAllText("DonneesExportees.csv", CsvFile.ToString(), Encoding.Default);
+                    File.WriteAllText(NameOfExportedFile + ".csv", CsvFile.ToString(), Encoding.Default);
 
                     MessageBox.Show("Données exportées correctement.");
                 }
