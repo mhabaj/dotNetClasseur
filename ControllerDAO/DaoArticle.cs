@@ -141,7 +141,9 @@ namespace Bacchus.ControllerDAO
                             TmpArticles.AddArticle(new Article(Convert.ToString(ResultSet["RefArticle"]), Convert.ToString(ResultSet["Description"]),
                                 FindSousFamilleByRef(Convert.ToInt32(ResultSet["RefSousFamille"])), FindMarqueByRef(Convert.ToInt32(ResultSet["RefMarque"])), Convert.ToDouble(ResultSet["PrixHT"]), Convert.ToInt32(ResultSet["Quantite"])));
                         }
+                        
                     }
+                    return TmpArticles;
                 }
                 catch (Exception e)
                 {
@@ -152,7 +154,7 @@ namespace Bacchus.ControllerDAO
                     Connection.Close();
                 }
             }
-            return TmpArticles;
+            return null;
         }
 
 

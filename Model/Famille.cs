@@ -79,5 +79,10 @@ namespace Bacchus.Model
         {
             return !(left == right);
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -245,7 +245,7 @@ namespace Bacchus.ControllerDAO
                 {
                     using (var Command = new SQLiteCommand(Connection))
                     {
-                        Command.CommandText = "SELECT * FROM Marque WHERE RefMarque=" + Reference;
+                        Command.CommandText = "SELECT * FROM Marques WHERE RefMarque=" + Reference;
                         SQLiteDataReader Reader = Command.ExecuteReader();
                         while (Reader.Read())
                         {

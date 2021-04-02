@@ -40,7 +40,7 @@ namespace Bacchus.Model
         /// <returns></returns>
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return ((IEnumerable)ListArticles).GetEnumerator();
         }
     }
 }

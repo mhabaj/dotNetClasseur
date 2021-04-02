@@ -21,7 +21,7 @@ namespace Bacchus.ControllerDAO
         {
             if (FindReference(SousFamilleToAdd.Name, "RefSousFamille", "SousFamilles") == 0)
             {
-                int TmpRefFamille = FindReference(SousFamilleToAdd.SelectedFamille.ToString(), "RefFamille", "Familles");
+                int TmpRefFamille = FindReference(SousFamilleToAdd.Famille.ToString(), "RefFamille", "Familles");
                 using (var Connection = GetSqLiteConnection())
                 {
                     Connection.Open();
@@ -94,6 +94,7 @@ namespace Bacchus.ControllerDAO
                             SousFamilles.AddSousFamille(new SousFamille(Convert.ToString(ResultSet["nom"]), FindFamilleByRef(Convert.ToInt32(ResultSet["RefFamille"]))));
                         }
                     }
+                    return SousFamilles;
                 }
                 catch (Exception e)
                 {

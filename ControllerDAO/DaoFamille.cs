@@ -137,6 +137,7 @@ namespace Bacchus.ControllerDAO
                             Familles.AddFamille(new Famille(Convert.ToString(ResultSet["nom"])));
                         }
                     }
+                    return Familles;
                 }
                 catch (Exception e)
                 {
@@ -147,7 +148,7 @@ namespace Bacchus.ControllerDAO
                     Connection.Close();
                 }
             }
-            return Familles;
+            return null;
         }
 
         public void ModifyFamille(string Name, string NewName)
@@ -157,13 +158,13 @@ namespace Bacchus.ControllerDAO
                 Connection.Open();
                 try
                 {
-                    using (var Cmd = new SQLiteCommand(Connection))
+                    using (var Query = new SQLiteCommand(Connection))
                     {
-                        Cmd.CommandText = "UPDATE Familles SET Nom = @Name Where RefFamille = @ReferenceFamille";
-                        Cmd.Parameters.AddWithValue("@ReferenceFamille", FindReference(Name, "RefFamille", "Familles"));
-                        Cmd.Parameters.AddWithValue("@Name", NewName);
-                        Cmd.Prepare();
-                        Cmd.ExecuteNonQuery();
+                        Query.CommandText = "UPDATE Familles SET Nom = @Name Where RefFamille = @ReferenceFamille";
+                        Query.Parameters.AddWithValue("@ReferenceFamille", FindReference(Name, "RefFamille", "Familles"));
+                        Query.Parameters.AddWithValue("@Name", NewName);
+                        Query.Prepare();
+                        Query.ExecuteNonQuery();
                     }
                 }
                 catch (Exception e)

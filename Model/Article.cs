@@ -30,12 +30,12 @@ namespace Bacchus.Model
         /// <param name="QuantiteArticle"></param>
         public Article(string RefArticle, string DescrArticle, SousFamille SsFamille, Marque MarqueArticle, double PrixArticle, int QuantiteArticle = 1)
         {
-            ReferenceArticle = RefArticle;
-            Description = DescrArticle;
-            SousFamille = SsFamille;
-            Marque = MarqueArticle;
-            Prix = PrixArticle;
-            Quantite = QuantiteArticle;
+            this.ReferenceArticle = RefArticle;
+            this.Description = DescrArticle;
+            this.SousFamille = SsFamille;
+            this.Marque = MarqueArticle;
+            this.Prix = PrixArticle;
+            this.Quantite = QuantiteArticle;
         }
     }
 }

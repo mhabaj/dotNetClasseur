@@ -32,5 +32,11 @@ namespace Bacchus
             Form FormImport = new FormImport();
             FormImport.ShowDialog();
         }
+
+        private void exporterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form FormExport = new FormExport();
+            FormExport.ShowDialog();
+        }
     }
 }

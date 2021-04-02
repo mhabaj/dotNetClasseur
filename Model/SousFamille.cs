@@ -14,7 +14,7 @@ namespace Bacchus.Model
         /// <summary>
         /// 
         /// </summary>
-        public Famille SelectedFamille { get; set; }
+        public Famille Famille { get; set; }
 
         /// <summary>
         /// 
@@ -23,7 +23,7 @@ namespace Bacchus.Model
         /// <param name="Famille"></param>
         public SousFamille(string SousFamName, Famille Famille) : base(SousFamName)
         {
-            this.SelectedFamille = Famille;
+            this.Famille = Famille;
         }
 
         /// <summary>
@@ -31,6 +31,7 @@ namespace Bacchus.Model
         /// </summary>
         public SousFamille()
         {
+            this.Famille = new Famille();
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace Bacchus.Model
             int hashCode = 1081318270;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Famille>.Default.GetHashCode(SelectedFamille);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Famille>.Default.GetHashCode(Famille);
             return hashCode;
         }
 
@@ -62,7 +63,7 @@ namespace Bacchus.Model
         /// <returns></returns>
         public override string ToString()
         {
-            return base.ToString() + "SOUSFAMILLE: " + SelectedFamille.ToString();
+            return base.ToString() + "..............................." + Famille.ToString();
         }
 
         /// <summary>

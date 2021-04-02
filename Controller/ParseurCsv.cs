@@ -37,13 +37,13 @@ namespace Bacchus.Controller
             ProgressBar.Refresh();
             ProgressBar.Step = 1;
 
-            if (IntegrationMode.Equals(true))
+            if (IntegrationMode == true)
             {
                 DaoController DAO = new DaoController();
                 DAO.EmptyDatabase();
             }
 
-            //les variables qui vont recevoir les données et qui seront parcourues
+            //variables that will recieve that data and that will be run down
             Familles Familles = new Familles();
             Marques Marques = new Marques();
             SousFamilles SousFamilles = new SousFamilles();
@@ -97,39 +97,44 @@ namespace Bacchus.Controller
                 }
                 MessageBox.Show("Les données ont été importées correctement.");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show("Problem ImportCsvFile function : " + e.Message);
-
-                MessageBox.Show("ERREUR : fichier non selectionné ou non valide." +
-                    "");
+                MessageBox.Show("ERREUR : fichier non selectionné ou non valide.");
             }
         }
 
         /// <summary>
         /// Method to export data from the database to a CSV file.
         /// </summary>
-        /// <param name="IntegrationMode"></param>
-        /// <param name="ProgressBar"></param>
-        public void ExportCsvFile()
+        /// <param name="NameOfExportedFile"></param>
+        public void ExportCsvFile(string NameOfExportedFile)
         {
             try
             {
                 var CsvFile = new StringBuilder();
                 var Categories = string.Format("{0};{1};{2};{3};{4};{5}", "Description", "Ref", "Marque", "Famille", "Sous-Famille", "Prix H.T.");
                 CsvFile.AppendLine(Categories);
-                foreach (Article Article in new DaoArticle().ListAllArticles())
+                Articles tmpArticles = new DaoArticle().ListAllArticles();
+                
+                if (tmpArticles != null)
                 {
-                    var Adding = string.Format("{0};{1};{2};{3};{4};{5}", Article.Description, Article.ReferenceArticle, Article.Marque.Name, Article.SousFamille.SelectedFamille.Name, Article.SousFamille.Name, Article.Prix);
-                    CsvFile.AppendLine(Adding);
-                }
-                File.WriteAllText("ExportedDatas.csv", CsvFile.ToString(), Encoding.Default);
+                    foreach (Article Article in tmpArticles)
+                    {
+                        var Adding = string.Format("{0};{1};{2};{3};{4};{5}", Article.Description, Article.ReferenceArticle, Article.Marque.Name, Article.SousFamille.Famille.Name, Article.SousFamille.Name, Article.Prix);
+                        CsvFile.AppendLine(Adding);
+                    }
+                    File.WriteAllText("DonneesExportees.csv", CsvFile.ToString(), Encoding.Default);
 
-                MessageBox.Show("Données exportées correctement.");
+                    MessageBox.Show("Données exportées correctement.");
+                }
+                else
+                {
+                    MessageBox.Show("problèmes avec les données à importer : donnée vide.");
+                }
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("ERREUR : export impossible");
+                MessageBox.Show("ERREUR : export impossible: "+ e.Message);
             }
 
 
