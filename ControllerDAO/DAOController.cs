@@ -74,20 +74,20 @@ namespace Bacchus.ControllerDAO
                 {
                     using (SQLiteCommand Query = new SQLiteCommand(Connection))
                     {
-                        if (TableName.Equals("SousFamilles")) //the table name is "SousFamilles"
+                        if (TableName.Equals("Familles"))
                         {
-                            Query.CommandText = "SELECT RefFamille FROM Familles WHERE Nom LIKE @Name";
-                            Query.Parameters.AddWithValue("@Name", Name);
+                            Query.CommandText = "SELECT RefFamille FROM FAMILLES WHERE Nom LIKE @NOM";
+                            Query.Parameters.AddWithValue("@Nom", Name);
                         }
-                        else if (TableName.Equals("Marques")) //the table name is "Marques"
+                        else if (TableName.Equals("SousFamilles"))
                         {
-                            Query.CommandText = "SELECT RefMarque FROM Marques WHERE Nom LIKE @Name";
-                            Query.Parameters.AddWithValue("@Name", Name);
+                            Query.CommandText = "SELECT RefSousFamille FROM SOUSFAMILLES WHERE Nom LIKE @NOM";
+                            Query.Parameters.AddWithValue("@Nom", Name);
                         }
-                        else //the table name is "Familles"
+                        else
                         {
-                            Query.CommandText = "SELECT RefSousFamille FROM  SousFamilles WHERE Nom LIKE @Name";
-                            Query.Parameters.AddWithValue("@Name", Name);
+                            Query.CommandText = "SELECT RefMarque FROM Marques WHERE Nom LIKE @NOM";
+                            Query.Parameters.AddWithValue("@Nom", Name);
                         }
                         Query.Prepare();
 
