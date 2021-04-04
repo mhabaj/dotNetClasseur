@@ -47,7 +47,6 @@ namespace Bacchus
         {
             if (!TextBox1.Text.Equals("") && !TextBox2.Text.Equals("") && !TextBox3.Text.Equals("") && !TextBox4.Text.Equals("") && !ComboBox1.SelectedItem.Equals("") && !ComboBox2.SelectedItem.Equals("") && Double.TryParse(TextBox3.Text, out double number))
             {
-              
                 if (Text.Equals("AJOUT"))
                 {               
                     Mark = true;
@@ -59,8 +58,6 @@ namespace Bacchus
                 }
                 else if (Text.Equals("MODIFICATION"))
                 {
-                   
-                   
                     Mark = true;
                     SousFamille TemporarySF = new SousFamille(ComboBox1.SelectedItem.ToString(), new Famille());
                     Marque TemporaryM = new Marque(ComboBox2.SelectedItem.ToString());
