@@ -69,6 +69,7 @@ namespace Bacchus
             this.ConfirmerButton.TabIndex = 3;
             this.ConfirmerButton.Text = "Confirmer";
             this.ConfirmerButton.UseVisualStyleBackColor = true;
+            this.ConfirmerButton.Click += new System.EventHandler(this.ConfirmerButton_Click_1);
             // 
             // FormMarque
             // 

@@ -32,19 +32,19 @@ namespace Bacchus
             TextBox1.Text = OldDescription = ListViewItem.SubItems[0].Text;
         }
 
-        private void ConfirmerButton_Click(object sender, EventArgs e)
+        private void ConfirmerButton_Click_1(object sender, EventArgs e)
         {
             if (!TextBox1.Text.Equals("") && (TextBox1.Text.Length < 100))
             {
                 if (Text.Equals("AJOUT"))
                 {
-                    new DaoFamille().AddFamille(TextBox1.Text);
+                    new DaoMarque().AddMarque(TextBox1.Text);
                     ToAdd = TextBox1.Text;
                     Close();
                 }
                 else if (Text.Equals("MODIFICATION"))
                 {
-                    new DaoFamille().ModifyFamille(OldDescription, TextBox1.Text);
+                    new DaoMarque().ModifyMarque(OldDescription, TextBox1.Text);
                     New = TextBox1.Text;
                     Close();
                 }

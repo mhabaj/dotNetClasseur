@@ -19,7 +19,7 @@ namespace Bacchus.Controller
 
         private Hashtable CreateGroupsTable(int Column)
         {
-            Hashtable Groups = new Hashtable();
+            Hashtable Tables = new Hashtable();
             foreach(ListViewItem item in ListView.Items)
             {
                 string SubItemText = item.SubItems[Column].Text;
@@ -27,12 +27,12 @@ namespace Bacchus.Controller
                 {
                     SubItemText = SubItemText.Substring(0, 1);
                 }
-                if (!Groups.Contains(SubItemText))
+                if (!Tables.Contains(SubItemText))
                 {
-                    Groups.Add(SubItemText, new ListViewGroup(SubItemText, HorizontalAlignment.Left));
+                    Tables.Add(SubItemText, new ListViewGroup(SubItemText, HorizontalAlignment.Left));
                 }
             }
-            return Groups;
+            return Tables;
         }
 
         public void SetGroups(int Column)

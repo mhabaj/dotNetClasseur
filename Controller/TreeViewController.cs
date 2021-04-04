@@ -67,6 +67,7 @@ namespace Bacchus.Controller
                     TNode.Text = New;
                 }
             }
+            DisplayElementsOfNode();
         }
 
         public void AddElementToNode(string Element)
@@ -90,7 +91,7 @@ namespace Bacchus.Controller
             {
                 if (TreeView.SelectedNode.Text.ToString().Equals("Marques"))
                 {
-                    ListViewPlayerController.ShowArticlesList();
+                    ListViewPlayerController.ShowMarquesList();
                 }
                 else
                 {
@@ -98,7 +99,7 @@ namespace Bacchus.Controller
                 }
             }else if (TreeView.SelectedNode.Level == 2)
             {
-                if (TreeView.SelectedNode.Text.Equals("Marques"))
+                if (TreeView.SelectedNode.Parent.Text.Equals("Marques"))
                 {
                     ListViewPlayerController.ShowArticlesListByMarque(TreeView.SelectedNode.Text);
                 }

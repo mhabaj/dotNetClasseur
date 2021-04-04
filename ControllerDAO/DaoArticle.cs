@@ -198,8 +198,6 @@ namespace Bacchus.ControllerDAO
                             Query.Parameters.AddWithValue("@Prix", Article.Prix);
                             Query.Parameters.AddWithValue("@Quantite", Article.Quantite);
 
-                            Connection.BeginTransaction();
-
                             Query.Prepare();
 
                             Query.ExecuteNonQuery();

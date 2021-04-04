@@ -194,6 +194,7 @@ namespace Bacchus.Controller
                 if (!FormFamille.New.Equals("") && !FormFamille.OldDescription.Equals(""))
                 {
                     UpdateElementPart(FormFamille.OldDescription, FormFamille.New);
+                    
                 }
             }
             else if (TvController.GetTreeView().SelectedNode.Text.Equals("Marques"))
@@ -203,6 +204,7 @@ namespace Bacchus.Controller
                 if (!FormMarque.New.Equals("") && !FormMarque.OldDescription.Equals(""))
                 {
                     UpdateElementPart(FormMarque.OldDescription, FormMarque.New);
+                    
                 }
             }
             else if (TvController.GetTreeView().SelectedNode.Parent.Text.Equals("Familles"))
@@ -212,6 +214,7 @@ namespace Bacchus.Controller
                 if (!FormSousFamille.New.Equals("") && !FormSousFamille.OldDescription.Equals(""))
                 {
                     UpdateElementPart(FormSousFamille.OldDescription, FormSousFamille.New);
+                    
                 }
             }
         }

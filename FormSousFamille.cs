@@ -32,7 +32,24 @@ namespace Bacchus
             ComboBox1.SelectedItem = FName;
         }
 
-        private void ConfirmerButton_Click(object sender, EventArgs e)
+        public FormSousFamille(ListViewItem ListViewItem, string FName)
+        {
+            New = OldDescription = "";
+            InitializeComponent();
+            Text = "MODIFICATION";
+            TextBox1.Text = OldDescription = ListViewItem.SubItems[0].Text;
+
+            ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
+            foreach (Famille Famille in new DaoFamille().ListAllFamilles())
+            {
+                ComboBox1.Items.Add(Famille.Name);
+            }
+            ComboBox1.SelectedItem = FName;
+        }
+
+        private void ConfirmerButton_Click_1(object sender, EventArgs e)
         {
             if (!TextBox1.Text.Equals("") && (TextBox1.Text.Length < 100))
             {
@@ -53,23 +70,6 @@ namespace Bacchus
             {
                 MessageBox.Show("Erreur : champ invalide ou > 100 caractères");
             }
-        }
-
-        public FormSousFamille(ListViewItem ListViewItem, string FName)
-        {
-            New = OldDescription = "";
-            InitializeComponent();
-            Text = "MODIFICATION D'ARTICLE";
-            TextBox1.Text = OldDescription = ListViewItem.SubItems[0].Text;
-
-            ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-
-
-            foreach (Famille Famille in new DaoFamille().ListAllFamilles())
-            {
-                ComboBox1.Items.Add(Famille.Name);
-            }
-            ComboBox1.SelectedItem = FName;
         }
     }
 }
