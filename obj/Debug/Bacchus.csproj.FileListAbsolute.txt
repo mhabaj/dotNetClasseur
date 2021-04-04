@@ -10,7 +10,6 @@ C:\Users\Sean\source\repos\Bacchus\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\Sean\source\repos\Bacchus\bin\Debug\EntityFramework.xml
 C:\Users\Sean\source\repos\Bacchus\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Sean\source\repos\Bacchus\bin\Debug\System.Data.SQLite.xml
-C:\Users\Sean\source\repos\Bacchus\obj\Debug\Bacchus.csprojAssemblyReference.cache
 C:\Users\Sean\source\repos\Bacchus\obj\Debug\Bacchus.FormArticle.resources
 C:\Users\Sean\source\repos\Bacchus\obj\Debug\Bacchus.FormSousFamille.resources
 C:\Users\Sean\source\repos\Bacchus\obj\Debug\Bacchus.FormExport.resources
