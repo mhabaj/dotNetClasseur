@@ -108,7 +108,7 @@ namespace Bacchus.Controller
                 ListView.Sorting = SortOrder.Descending;
             }
 
-            EbController.SetTable(E.Column);
+            EbController.SetGroups(E.Column);
             ListView.BeginUpdate();
             ListView.Sort();
             ListView.Update();

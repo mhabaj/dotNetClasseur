@@ -10,83 +10,71 @@ namespace Bacchus.Controller
 {
     class ElementBuilderController
     {
-
         public ListView ListView { get; set; }
 
-        public ElementBuilderController(ListView LView)
+        public ElementBuilderController(ListView ListView)
         {
-            this.ListView = LView;
+            this.ListView = ListView;
         }
 
-        private Hashtable ElementsGenerateRows(int Column)
+        private Hashtable CreateGroupsTable(int Column)
         {
-            Hashtable Tables = new Hashtable();
-            foreach (ListViewItem item in ListView.Items)
+            Hashtable Groups = new Hashtable();
+            foreach(ListViewItem item in ListView.Items)
             {
                 string SubItemText = item.SubItems[Column].Text;
-
-                if (Column == 0)
+                if (Column.Equals(0))
                 {
                     SubItemText = SubItemText.Substring(0, 1);
                 }
-
-                if (!Tables.Contains(SubItemText))
+                if (!Groups.Contains(SubItemText))
                 {
-                    Tables.Add(SubItemText, new ListViewGroup(SubItemText,
-                        HorizontalAlignment.Left));
+                    Groups.Add(SubItemText, new ListViewGroup(SubItemText, HorizontalAlignment.Left));
                 }
             }
-            return Tables;
+            return Groups;
         }
 
-        public void SetTable(int Column)
+        public void SetGroups(int Column)
         {
             ListView.Groups.Clear();
+            Hashtable Groups = CreateGroupsTable(Column);
+            ListViewGroup[] GroupsArray = new ListViewGroup[Groups.Count];
+            Groups.Values.CopyTo(GroupsArray, 0);
 
-            // Retrieve the hash table corresponding to the column.
-            Hashtable Tables = ElementsGenerateRows(Column);
+            Array.Sort(GroupsArray, new ListViewGroupSorter(ListView.Sorting));
+            ListView.Groups.AddRange(GroupsArray);
 
-            // Copy the groups for the column to an array.
-            ListViewGroup[] groupsArray = new ListViewGroup[Tables.Count];
-            Tables.Values.CopyTo(groupsArray, 0);
-
-            Array.Sort(groupsArray, new ListViewSorter(ListView.Sorting));
-            ListView.Groups.AddRange(groupsArray);
-
-            foreach (ListViewItem item in ListView.Items)
+            foreach(ListViewItem Item in ListView.Items)
             {
-                string Text = item.SubItems[Column].Text;
-
-                if (Column == 0)
+                string SubItemText = Item.SubItems[Column].Text;
+                if (Column.Equals(0))
                 {
-                    Text = Text.Substring(0, 1);
+                    SubItemText = SubItemText.Substring(0, 1);
                 }
-                item.Group = (ListViewGroup)Tables[Text];
+                Item.Group = (ListViewGroup)Groups[SubItemText];
             }
         }
 
-        private class ListViewSorter : IComparer
+        private class ListViewGroupSorter : IComparer
         {
-            private readonly SortOrder SOrder;
+            private readonly SortOrder Order;
 
-            public ListViewSorter(SortOrder Order)
+            public ListViewGroupSorter(SortOrder TheOrder)
             {
-                SOrder = Order;
+                Order = TheOrder;
             }
 
-            public int Compare(object x, object y)
+            public int Compare(object X, object Y)
             {
-                int Ok = String.Compare(
-                    ((ListViewGroup)x).Header,
-                    ((ListViewGroup)y).Header
-                );
-                if (SOrder == SortOrder.Ascending)
+                int result = String.Compare(((ListViewGroup)X).Header, ((ListViewGroup)Y).Header);
+                if (Order == SortOrder.Ascending)
                 {
-                    return Ok;
+                    return result;
                 }
                 else
                 {
-                    return -Ok;
+                    return -result;
                 }
             }
         }
