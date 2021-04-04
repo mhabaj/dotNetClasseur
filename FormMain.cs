@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bacchus.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace Bacchus
 {
     public partial class FormMain : Form
     {
+        private GeneralViewController GeneralViewController;
         public FormMain()
         {
             InitializeComponent();
+            GeneralViewController = new GeneralViewController(this.ListView1,this.treeView1, this.statusStrip1);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -37,6 +40,11 @@ namespace Bacchus
         {
             Form FormExport = new FormExport();
             FormExport.ShowDialog();
+        }
+
+        private void actualiserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GeneralViewController.Reload();
         }
     }
 }

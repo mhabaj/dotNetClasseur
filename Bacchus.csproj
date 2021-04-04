@@ -70,7 +70,36 @@
     <Compile Include="ControllerDAO\DaoMarque.cs" />
     <Compile Include="ControllerDAO\DaoFamille.cs" />
     <Compile Include="ControllerDAO\DaoArticle.cs" />
+    <Compile Include="Controller\ElementBuilderController.cs" />
+    <Compile Include="Controller\ListViewController.cs" />
+    <Compile Include="Controller\ListViewPlayerController.cs" />
+    <Compile Include="Controller\GeneralViewController.cs" />
+    <Compile Include="Controller\TreeViewController.cs" />
     <Compile Include="Controller\ParseurCsv.cs" />
+    <Compile Include="FormArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArticle.Designer.cs">
+      <DependentUpon>FormArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSousFamille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSousFamille.Designer.cs">
+      <DependentUpon>FormSousFamille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMarque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMarque.Designer.cs">
+      <DependentUpon>FormMarque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFamille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFamille.Designer.cs">
+      <DependentUpon>FormFamille.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,14 +128,26 @@
     <Compile Include="Model\Famille.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormArticle.resx">
+      <DependentUpon>FormArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSousFamille.resx">
+      <DependentUpon>FormSousFamille.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormExport.resx">
       <DependentUpon>FormExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFamille.resx">
+      <DependentUpon>FormFamille.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormImport.resx">
       <DependentUpon>FormImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMarque.resx">
+      <DependentUpon>FormMarque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
