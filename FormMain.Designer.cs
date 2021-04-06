@@ -76,21 +76,21 @@ namespace Bacchus
             // actualiserToolStripMenuItem
             // 
             this.actualiserToolStripMenuItem.Name = "actualiserToolStripMenuItem";
-            this.actualiserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.actualiserToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.actualiserToolStripMenuItem.Text = "Actualiser";
             this.actualiserToolStripMenuItem.Click += new System.EventHandler(this.actualiserToolStripMenuItem_Click);
             // 
             // importerToolStripMenuItem
             // 
             this.importerToolStripMenuItem.Name = "importerToolStripMenuItem";
-            this.importerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importerToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.importerToolStripMenuItem.Text = "Importer";
             this.importerToolStripMenuItem.Click += new System.EventHandler(this.importerToolStripMenuItem_Click);
             // 
             // exporterToolStripMenuItem
             // 
             this.exporterToolStripMenuItem.Name = "exporterToolStripMenuItem";
-            this.exporterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exporterToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.exporterToolStripMenuItem.Text = "Exporter";
             this.exporterToolStripMenuItem.Click += new System.EventHandler(this.exporterToolStripMenuItem_Click);
             // 
@@ -177,13 +177,13 @@ namespace Bacchus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Purple;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";

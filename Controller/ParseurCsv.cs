@@ -101,7 +101,8 @@ namespace Bacchus.Controller
             }
             catch (Exception e)
             {
-                MessageBox.Show("ERREUR : fichier non selectionné ou non valide.");
+                MessageBox.Show("ERREUR : fichier non selectionné ou non valide:");
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -138,6 +139,7 @@ namespace Bacchus.Controller
             catch (Exception e)
             {
                 MessageBox.Show("ERREUR : export impossible");
+                Console.WriteLine(e.Message);
             }
 
 

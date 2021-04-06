@@ -47,17 +47,19 @@ namespace Bacchus
             // 
             // TextBox1
             // 
-            this.TextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.TextBox1.BackColor = System.Drawing.Color.White;
+            this.TextBox1.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox1.ForeColor = System.Drawing.Color.Navy;
             this.TextBox1.Location = new System.Drawing.Point(273, 31);
             this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(244, 20);
+            this.TextBox1.Size = new System.Drawing.Size(244, 22);
             this.TextBox1.TabIndex = 0;
             // 
             // TextBox2
             // 
-            this.TextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.TextBox2.ForeColor = System.Drawing.Color.Navy;
+            this.TextBox2.BackColor = System.Drawing.Color.White;
+            this.TextBox2.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox2.ForeColor = System.Drawing.Color.Black;
             this.TextBox2.Location = new System.Drawing.Point(273, 87);
             this.TextBox2.Multiline = true;
             this.TextBox2.Name = "TextBox2";
@@ -66,80 +68,94 @@ namespace Bacchus
             // 
             // TextBox3
             // 
-            this.TextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.TextBox3.BackColor = System.Drawing.Color.White;
+            this.TextBox3.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox3.ForeColor = System.Drawing.Color.Navy;
             this.TextBox3.Location = new System.Drawing.Point(273, 237);
             this.TextBox3.Name = "TextBox3";
-            this.TextBox3.Size = new System.Drawing.Size(96, 20);
+            this.TextBox3.Size = new System.Drawing.Size(96, 21);
             this.TextBox3.TabIndex = 4;
             // 
             // TextBox4
             // 
-            this.TextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.TextBox4.BackColor = System.Drawing.Color.White;
+            this.TextBox4.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox4.ForeColor = System.Drawing.Color.Navy;
             this.TextBox4.Location = new System.Drawing.Point(273, 283);
             this.TextBox4.Name = "TextBox4";
-            this.TextBox4.Size = new System.Drawing.Size(96, 20);
+            this.TextBox4.Size = new System.Drawing.Size(96, 21);
             this.TextBox4.TabIndex = 5;
             // 
             // ReferenceLabel
             // 
             this.ReferenceLabel.AutoSize = true;
-            this.ReferenceLabel.Location = new System.Drawing.Point(184, 31);
+            this.ReferenceLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReferenceLabel.ForeColor = System.Drawing.Color.Black;
+            this.ReferenceLabel.Location = new System.Drawing.Point(172, 31);
             this.ReferenceLabel.Name = "ReferenceLabel";
-            this.ReferenceLabel.Size = new System.Drawing.Size(77, 13);
+            this.ReferenceLabel.Size = new System.Drawing.Size(95, 13);
             this.ReferenceLabel.TabIndex = 6;
             this.ReferenceLabel.Text = "Référence :";
             // 
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Location = new System.Drawing.Point(187, 87);
+            this.DescriptionLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DescriptionLabel.ForeColor = System.Drawing.Color.Black;
+            this.DescriptionLabel.Location = new System.Drawing.Point(157, 87);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(86, 13);
+            this.DescriptionLabel.Size = new System.Drawing.Size(111, 13);
             this.DescriptionLabel.TabIndex = 7;
             this.DescriptionLabel.Text = "Description :";
             // 
             // SousFamilleLabel
             // 
             this.SousFamilleLabel.AutoSize = true;
-            this.SousFamilleLabel.Location = new System.Drawing.Point(184, 158);
+            this.SousFamilleLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SousFamilleLabel.ForeColor = System.Drawing.Color.Black;
+            this.SousFamilleLabel.Location = new System.Drawing.Point(157, 158);
             this.SousFamilleLabel.Name = "SousFamilleLabel";
-            this.SousFamilleLabel.Size = new System.Drawing.Size(84, 13);
+            this.SousFamilleLabel.Size = new System.Drawing.Size(111, 13);
             this.SousFamilleLabel.TabIndex = 8;
             this.SousFamilleLabel.Text = "SousFamille :";
             // 
             // MarqueLabel
             // 
             this.MarqueLabel.AutoSize = true;
-            this.MarqueLabel.Location = new System.Drawing.Point(187, 195);
+            this.MarqueLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MarqueLabel.ForeColor = System.Drawing.Color.Black;
+            this.MarqueLabel.Location = new System.Drawing.Point(196, 195);
             this.MarqueLabel.Name = "MarqueLabel";
-            this.MarqueLabel.Size = new System.Drawing.Size(62, 13);
+            this.MarqueLabel.Size = new System.Drawing.Size(71, 13);
             this.MarqueLabel.TabIndex = 9;
             this.MarqueLabel.Text = "Marque :";
             // 
             // PrixLabel
             // 
             this.PrixLabel.AutoSize = true;
-            this.PrixLabel.Location = new System.Drawing.Point(187, 237);
+            this.PrixLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrixLabel.ForeColor = System.Drawing.Color.Black;
+            this.PrixLabel.Location = new System.Drawing.Point(173, 237);
             this.PrixLabel.Name = "PrixLabel";
-            this.PrixLabel.Size = new System.Drawing.Size(59, 13);
+            this.PrixLabel.Size = new System.Drawing.Size(95, 13);
             this.PrixLabel.TabIndex = 10;
             this.PrixLabel.Text = "Prix H.T. :";
             // 
             // QuantiteLabel
             // 
             this.QuantiteLabel.AutoSize = true;
-            this.QuantiteLabel.Location = new System.Drawing.Point(187, 286);
+            this.QuantiteLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuantiteLabel.ForeColor = System.Drawing.Color.Black;
+            this.QuantiteLabel.Location = new System.Drawing.Point(180, 283);
             this.QuantiteLabel.Name = "QuantiteLabel";
-            this.QuantiteLabel.Size = new System.Drawing.Size(69, 13);
+            this.QuantiteLabel.Size = new System.Drawing.Size(87, 13);
             this.QuantiteLabel.TabIndex = 11;
             this.QuantiteLabel.Text = "Quantité :";
             // 
             // ConfirmerButton
             // 
             this.ConfirmerButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.ConfirmerButton.Location = new System.Drawing.Point(273, 348);
+            this.ConfirmerButton.Location = new System.Drawing.Point(273, 330);
             this.ConfirmerButton.Name = "ConfirmerButton";
             this.ConfirmerButton.Size = new System.Drawing.Size(155, 38);
             this.ConfirmerButton.TabIndex = 12;
@@ -149,29 +165,31 @@ namespace Bacchus
             // 
             // ComboBox1
             // 
-            this.ComboBox1.BackColor = System.Drawing.Color.SlateBlue;
-            this.ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ComboBox1.BackColor = System.Drawing.Color.Lavender;
+            this.ComboBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBox1.ForeColor = System.Drawing.Color.Black;
             this.ComboBox1.FormattingEnabled = true;
             this.ComboBox1.Location = new System.Drawing.Point(273, 158);
             this.ComboBox1.Name = "ComboBox1";
-            this.ComboBox1.Size = new System.Drawing.Size(270, 21);
+            this.ComboBox1.Size = new System.Drawing.Size(270, 23);
             this.ComboBox1.TabIndex = 13;
             // 
             // ComboBox2
             // 
-            this.ComboBox2.BackColor = System.Drawing.Color.SlateBlue;
-            this.ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ComboBox2.BackColor = System.Drawing.Color.Lavender;
+            this.ComboBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBox2.ForeColor = System.Drawing.Color.Black;
             this.ComboBox2.FormattingEnabled = true;
             this.ComboBox2.Location = new System.Drawing.Point(273, 195);
             this.ComboBox2.Name = "ComboBox2";
-            this.ComboBox2.Size = new System.Drawing.Size(244, 21);
+            this.ComboBox2.Size = new System.Drawing.Size(244, 24);
             this.ComboBox2.TabIndex = 14;
             // 
             // FormArticle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumPurple;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(807, 399);
             this.Controls.Add(this.ComboBox2);
             this.Controls.Add(this.ComboBox1);
@@ -188,6 +206,7 @@ namespace Bacchus
             this.Controls.Add(this.TextBox1);
             this.Font = new System.Drawing.Font("Felix Titling", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.MintCream;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormArticle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

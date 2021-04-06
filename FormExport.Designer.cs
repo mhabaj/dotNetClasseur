@@ -39,7 +39,7 @@ namespace Bacchus
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.Location = new System.Drawing.Point(153, 152);
+            this.button1.Location = new System.Drawing.Point(171, 153);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 34);
             this.button1.TabIndex = 0;
@@ -49,9 +49,10 @@ namespace Bacchus
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.ForeColor = System.Drawing.Color.LightCoral;
-            this.textBox1.Location = new System.Drawing.Point(135, 101);
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(153, 100);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(186, 20);
@@ -61,9 +62,11 @@ namespace Bacchus
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(132, 74);
+            this.label1.Font = new System.Drawing.Font("OCR A Extended", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(73, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 13);
+            this.label1.Size = new System.Drawing.Size(386, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Veuillez entrer le nom de votre fichier : ";
             // 
@@ -72,7 +75,7 @@ namespace Bacchus
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.MediumPurple;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);

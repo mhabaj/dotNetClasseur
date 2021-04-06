@@ -38,7 +38,9 @@ namespace Bacchus
             // 
             // DescriptionTextFamille
             // 
-            this.DescriptionTextFamille.ForeColor = System.Drawing.Color.LightCoral;
+            this.DescriptionTextFamille.BackColor = System.Drawing.Color.White;
+            this.DescriptionTextFamille.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DescriptionTextFamille.ForeColor = System.Drawing.Color.Black;
             this.DescriptionTextFamille.Location = new System.Drawing.Point(114, 89);
             this.DescriptionTextFamille.Multiline = true;
             this.DescriptionTextFamille.Name = "DescriptionTextFamille";
@@ -48,6 +50,7 @@ namespace Bacchus
             // DescriptionLabelFamille
             // 
             this.DescriptionLabelFamille.AutoSize = true;
+            this.DescriptionLabelFamille.ForeColor = System.Drawing.Color.Black;
             this.DescriptionLabelFamille.Location = new System.Drawing.Point(27, 89);
             this.DescriptionLabelFamille.Name = "DescriptionLabelFamille";
             this.DescriptionLabelFamille.Size = new System.Drawing.Size(66, 13);
@@ -57,14 +60,14 @@ namespace Bacchus
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.MediumPurple;
+            this.label1.BackColor = System.Drawing.Color.Silver;
             this.label1.Font = new System.Drawing.Font("OCR A Extended", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(178, 27);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(230, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 17);
+            this.label1.Size = new System.Drawing.Size(206, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "AJOUTER/MODIFIER UNE FAMILLE";
+            this.label1.Text = "EDITER UNE FAMILLE";
             // 
             // ConfirmerButton
             // 
@@ -81,7 +84,7 @@ namespace Bacchus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumPurple;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(651, 342);
             this.Controls.Add(this.ConfirmerButton);
             this.Controls.Add(this.label1);

@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Bacchus.ControllerDAO
 {
@@ -13,13 +15,17 @@ namespace Bacchus.ControllerDAO
     /// </summary>
     class DaoController
     {
-        private readonly string DatabaseFilePath = @"URI=file:..\..\Bacchus.SQLite"; //path of the SQLite database.
+        private string DatabaseFilePath; //path of the SQLite database.
 
         /// <summary>
         /// default constructor of the class, does nothing.
         /// </summary>
         public DaoController()
         {
+            // Recover the Executable Path In the system and replace it's name with the database file name.
+            string AppDefaultDirectory = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath),"Bacchus.SQLite");
+            DatabaseFilePath = AppDefaultDirectory;
+            
         }
 
         /// <summary>
@@ -28,7 +34,7 @@ namespace Bacchus.ControllerDAO
         /// <returns></returns>
         public SQLiteConnection GetSqLiteConnection()
         {
-            SQLiteConnection DbConnection = new SQLiteConnection(DatabaseFilePath);//connects to the database
+            SQLiteConnection DbConnection = new SQLiteConnection("data source=" + DatabaseFilePath);//connects to the database
             return DbConnection;
         }
 

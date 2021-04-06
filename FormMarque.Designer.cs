@@ -38,8 +38,8 @@ namespace Bacchus
             // 
             // TextBox1
             // 
-            this.TextBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.TextBox1.ForeColor = System.Drawing.Color.Firebrick;
+            this.TextBox1.BackColor = System.Drawing.Color.White;
+            this.TextBox1.ForeColor = System.Drawing.Color.Black;
             this.TextBox1.Location = new System.Drawing.Point(127, 81);
             this.TextBox1.Multiline = true;
             this.TextBox1.Name = "TextBox1";
@@ -49,27 +49,30 @@ namespace Bacchus
             // DescriptionLabelMarque
             // 
             this.DescriptionLabelMarque.AutoSize = true;
-            this.DescriptionLabelMarque.Location = new System.Drawing.Point(31, 81);
+            this.DescriptionLabelMarque.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DescriptionLabelMarque.ForeColor = System.Drawing.Color.Black;
+            this.DescriptionLabelMarque.Location = new System.Drawing.Point(12, 81);
             this.DescriptionLabelMarque.Name = "DescriptionLabelMarque";
-            this.DescriptionLabelMarque.Size = new System.Drawing.Size(86, 13);
+            this.DescriptionLabelMarque.Size = new System.Drawing.Size(111, 13);
             this.DescriptionLabelMarque.TabIndex = 1;
             this.DescriptionLabelMarque.Text = "Description :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(253, 31);
+            this.label1.Font = new System.Drawing.Font("OCR A Extended", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(320, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 18);
+            this.label1.Size = new System.Drawing.Size(178, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "MODIFIER/AJOUTER UNE MARQUE";
+            this.label1.Text = "EDITER UNE MARQUE";
             // 
             // ConfirmerButton
             // 
             this.ConfirmerButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.ConfirmerButton.Location = new System.Drawing.Point(299, 251);
+            this.ConfirmerButton.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmerButton.Location = new System.Drawing.Point(314, 260);
             this.ConfirmerButton.Name = "ConfirmerButton";
             this.ConfirmerButton.Size = new System.Drawing.Size(184, 47);
             this.ConfirmerButton.TabIndex = 3;
@@ -81,7 +84,7 @@ namespace Bacchus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumPurple;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(809, 361);
             this.Controls.Add(this.ConfirmerButton);
             this.Controls.Add(this.label1);
