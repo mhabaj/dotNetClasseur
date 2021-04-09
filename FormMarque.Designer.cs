@@ -45,6 +45,7 @@ namespace Bacchus
             this.TextBox1.Name = "TextBox1";
             this.TextBox1.Size = new System.Drawing.Size(570, 137);
             this.TextBox1.TabIndex = 0;
+            this.TextBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // DescriptionLabelMarque
             // 

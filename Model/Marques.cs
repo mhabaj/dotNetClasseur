@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bacchus.Model
 {
@@ -24,21 +20,11 @@ namespace Bacchus.Model
         }
 
         /// <summary>
-        /// Method to add a Marque object to the list of Marques.
-        /// </summary>
-        /// <param name="Marque"></param>
-        public void AddMarque(Marque Marque)
-        {
-            if (!IsMarque(Marque))
-                ListMarques.Add(Marque);
-        }
-
-        /// <summary>
         /// Method that returns true if the Marque is in the list.
         /// </summary>
         /// <param name="Marque"></param>
-        /// <returns></returns>
-        public bool IsMarque(Marque Marque)
+        /// <returns>true if exists, else false</returns>
+        public bool MarqueExists(Marque Marque)
         {
             foreach (var CurrentMarque in ListMarques)
             {
@@ -49,6 +35,18 @@ namespace Bacchus.Model
             }
             return false;
         }
+
+
+        /// <summary>
+        /// Method to add a Marque object to the list of Marques.
+        /// </summary>
+        /// <param name="Marque"></param>
+        public void AddMarque(Marque Marque)
+        {
+            if (!MarqueExists(Marque))
+                ListMarques.Add(Marque);
+        }
+
 
         /// <summary>
         /// implementation of the Ienumerable interface to make the class foreachable.

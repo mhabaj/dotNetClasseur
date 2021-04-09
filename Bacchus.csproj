@@ -75,7 +75,7 @@
     <Compile Include="Controller\ViewController\ListViewController.cs" />
     <Compile Include="Controller\ViewController\MainViewController.cs" />
     <Compile Include="Controller\ViewController\TreeViewController.cs" />
-    <Compile Include="Controller\ParseurCsv.cs" />
+    <Compile Include="Controller\FileManager.cs" />
     <Compile Include="FormArticle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,7 +159,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Bacchus.SQLite">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

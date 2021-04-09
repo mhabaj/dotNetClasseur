@@ -13,7 +13,7 @@ namespace Bacchus
 {
     public partial class FormMain : Form
     {
-        private MainViewController GeneralViewController;
+        private MainViewController GeneralViewController { get; set; }
         public FormMain()
         {
             InitializeComponent();

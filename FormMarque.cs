@@ -54,5 +54,10 @@ namespace Bacchus
                 MessageBox.Show("Erreur : champs vide ou > 100 caractères.");
             }
         }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,11 +13,11 @@ namespace Bacchus
 {
     public partial class FormExport : Form
     {
-        private ParseurCsv CsvParseur;
+        private FileManager CsvParseur;
         public FormExport()
         {
             InitializeComponent();
-            CsvParseur = new ParseurCsv();
+            CsvParseur = new FileManager();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bacchus.Model
+﻿namespace Bacchus.Model
 {
     /// <summary>
     /// SousFamille class, subclass of Famille.
@@ -17,6 +11,14 @@ namespace Bacchus.Model
         public Famille Famille { get; set; }
 
         /// <summary>
+        /// default constructor of the SousFamille class.
+        /// </summary>
+        public SousFamille()
+        {
+            this.Famille = new Famille();
+        }
+
+        /// <summary>
         /// confort constructor of the class.
         /// </summary>
         /// <param name="SousFamName"></param>
@@ -24,14 +26,6 @@ namespace Bacchus.Model
         public SousFamille(string SousFamName, Famille Famille) : base(SousFamName)
         {
             this.Famille = Famille;
-        }
-
-        /// <summary>
-        /// default constructor of the SousFamille class.
-        /// </summary>
-        public SousFamille()
-        {
-            this.Famille = new Famille();
         }
 
         /// <summary>
@@ -53,14 +47,7 @@ namespace Bacchus.Model
             return base.GetHashCode();
         }
 
-        /// <summary>
-        /// redefinition of the ToString() method.
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return base.ToString() + "..............................." + Famille.ToString();
-        }
+      
 
     }
 }

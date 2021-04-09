@@ -1,10 +1,6 @@
 ﻿using Bacchus.Model;
 using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bacchus.ControllerDAO
 {
@@ -17,7 +13,15 @@ namespace Bacchus.ControllerDAO
         {
 
         }
-
+        /// <summary>
+        /// Retrieve Article Reference by it's attributes
+        /// </summary>
+        /// <param name="Description"></param>
+        /// <param name="RefSousFamille"></param>
+        /// <param name="RefMarque"></param>
+        /// <param name="Prix"></param>
+        /// <param name="Quantite"></param>
+        /// <returns>string Article Reference</returns>
         public string GetRefArticleByOtherAttributs(string Description, int RefSousFamille, int RefMarque, string Prix, string Quantite)
         {
             string RefArticleToReturn = "";
@@ -41,7 +45,6 @@ namespace Bacchus.ControllerDAO
                             while (ResultSet.Read())
                             {
                                 if (!ResultSet.IsDBNull(0))
-                                    Console.WriteLine("LA REF TROUVEE: ", ResultSet["RefArticle"]);
                                     RefArticleToReturn = Convert.ToString(ResultSet["RefArticle"]);
                             }
                         }
@@ -115,11 +118,11 @@ namespace Bacchus.ControllerDAO
                 {
                     using (var Query = new SQLiteCommand(Connection))
                     {
-                        if (GetQuantite(ArticleToAdd.ReferenceArticle) == 0)//If article doesnt already Exists
+                        if (GetQuantite(ArticleToAdd.RefArticle) == 0)//If article doesnt already Exists
 
                         {
                             Query.CommandText = "INSERT INTO Articles VALUES(@idArticle,@Description,@ReferenceSousFamille,@ReferenceMarque,@Prix,@Quantite)";
-                            Query.Parameters.AddWithValue("@idArticle", ArticleToAdd.ReferenceArticle);
+                            Query.Parameters.AddWithValue("@idArticle", ArticleToAdd.RefArticle);
                             Query.Parameters.AddWithValue("@Description", ArticleToAdd.Description);
                             Query.Parameters.AddWithValue("@ReferenceSousFamille", FindReference(ArticleToAdd.SousFamille.Name, "RefSousFamille", "SousFamilles"));
                             Query.Parameters.AddWithValue("@ReferenceMarque", FindReference(ArticleToAdd.Marque.Name, "RefMarque", "Marques"));
@@ -129,8 +132,8 @@ namespace Bacchus.ControllerDAO
                         else //add quantity to existing total quantity
                         {
                             Query.CommandText = "UPDATE Articles SET QUANTITE = @Qte WHERE RefArticle =@RefArticle";
-                            Query.Parameters.AddWithValue("@Qte", GetQuantite(ArticleToAdd.ReferenceArticle) + ArticleToAdd.Quantite);
-                            Query.Parameters.AddWithValue("@RefArticle", ArticleToAdd.ReferenceArticle);
+                            Query.Parameters.AddWithValue("@Qte", GetQuantite(ArticleToAdd.RefArticle) + ArticleToAdd.Quantite);
+                            Query.Parameters.AddWithValue("@RefArticle", ArticleToAdd.RefArticle);
                         }
 
                         Query.Prepare();
@@ -234,8 +237,8 @@ namespace Bacchus.ControllerDAO
                         using (var Query = new SQLiteCommand(Connection))
                         {
                             Query.CommandText = "UPDATE Articles SET Description = @Description, RefSousFamille = @ReferenceSousFamille, " +
-                            "RefMarque = @ReferenceMarque, PrixHt = @Prix, Quantite = @Quantite Where RefArticle = @ReferenceArticle";
-                            Query.Parameters.AddWithValue("@ReferenceArticle", Article.ReferenceArticle);
+                            "RefMarque = @ReferenceMarque, PrixHt = @Prix, Quantite = @Quantite Where RefArticle = @RefArticle";
+                            Query.Parameters.AddWithValue("@RefArticle", Article.RefArticle);
                             Query.Parameters.AddWithValue("@Description", Article.Description);
                             Query.Parameters.AddWithValue("@ReferenceSousFamille", FindReference(Article.SousFamille.Name, "RefSousFamille", "SousFamilles"));
                             Query.Parameters.AddWithValue("@ReferenceMarque", FindReference(Article.Marque.Name, "RefMarque", "Marques"));

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bacchus.Model
+﻿namespace Bacchus.Model
 {
     /// <summary>
     /// Article class which contains the methods related to an article object.
-    /// Author : Sean Anica & Alhabaj Mahmod
+    /// Author : ALHABAJ Mahmod, ANICA Sean
     /// </summary>
     class Article
     {
-        public string ReferenceArticle { get; set; }
+        public string RefArticle { get; set; }
         public string Description { get; set; }
         public SousFamille SousFamille { get; set; }
         public Marque Marque { get; set; }
@@ -30,7 +24,7 @@ namespace Bacchus.Model
         /// <param name="QuantiteArticle"></param>
         public Article(string RefArticle, string DescrArticle, SousFamille SsFamille, Marque MarqueArticle, double PrixArticle, int QuantiteArticle = 1)
         {
-            this.ReferenceArticle = RefArticle;
+            this.RefArticle = RefArticle;
             this.Description = DescrArticle;
             this.SousFamille = SsFamille;
             this.Marque = MarqueArticle;

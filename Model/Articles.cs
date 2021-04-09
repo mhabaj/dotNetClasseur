@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bacchus.Model
 {
     /// <summary>
     /// Articles class which contains the methods that allows to implement the Article class into an IEnumerable interface.
-    /// Author: Anica Sean & Alhabaj Mahmod
+    /// Author: ALHABAJ Mahmod, ANICA Sean
     /// </summary>
     class Articles :IEnumerable
     {

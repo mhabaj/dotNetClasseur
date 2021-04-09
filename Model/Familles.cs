@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bacchus.Model
 {
@@ -29,16 +25,16 @@ namespace Bacchus.Model
         /// <param name="Famille"></param>
         public void AddFamille(Famille Famille)
         {
-            if (!IsFamille(Famille))
+            if (!FamilleExists(Famille))
                 ListFamilles.Add(Famille);
         }
 
         /// <summary>
-        /// Method that returns true if the current Famille is equal to the one in parameter.
+        /// Method that returns true if the Famille exists already.
         /// </summary>
         /// <param name="Famille"></param>
-        /// <returns></returns>
-        public bool IsFamille(Famille Famille)
+        /// <returns> true if exists, else false </returns>
+        public bool FamilleExists(Famille Famille)
         {
             foreach (var CurrentFamille in ListFamilles)
             {
@@ -53,7 +49,6 @@ namespace Bacchus.Model
         /// <summary>
         /// Implementation of the getEnumerator interface to make the list usable with foreach. 
         /// </summary>
-        /// <returns></returns>
         public IEnumerator GetEnumerator()
         {
             return ((IEnumerable)ListFamilles).GetEnumerator();

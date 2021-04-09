@@ -14,11 +14,11 @@ namespace Bacchus
 {
     public partial class FormImport : Form
     {
-        private ParseurCsv CsvParseur;
+        private FileManager CsvParseur;
         public FormImport()
         {
             InitializeComponent();
-            CsvParseur = new ParseurCsv();
+            CsvParseur = new FileManager();
         }
 
 

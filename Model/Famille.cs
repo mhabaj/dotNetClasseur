@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Bacchus.Model
 {
     /// <summary>
     /// Class Famille, contains the methods related to the Family objects containing several Article objects.
-    /// Author : Sean Anica & Alhabaj Mahmod
+    /// Author : ALHABAJ Mahmod, ANICA Sean
     /// </summary>
     class Famille
     {
@@ -32,10 +28,10 @@ namespace Bacchus.Model
         }
 
         /// <summary>
-        /// Redifinition of the equals method in order to compare 2 family objects
+        /// Compare 2 family objects by overriding the original Equals.
         /// </summary>
         /// <param name="famille"></param>
-        /// <returns></returns>
+        /// <returns> true if same, else false. </returns>
         public override bool Equals(object famille)
         {
             if (famille == null)

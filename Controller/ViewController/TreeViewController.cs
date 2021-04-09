@@ -105,7 +105,7 @@ namespace Bacchus.Controller
       /// <summary>
       /// Add a new Node to the tree
       /// </summary>
-      /// <param name="Element"></param>
+      /// <param name="Element">Element name to add</param>
 
         public void AddElementToNode(string Element)
         {

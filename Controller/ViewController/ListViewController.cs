@@ -43,7 +43,7 @@ namespace Bacchus.Controller
                 Article.Marque.Name,
                 Article.Prix + "",
                 Article.Quantite + "",
-                Article.ReferenceArticle });
+                Article.RefArticle });
 
                 ListView.Items.Add(Item);
             }
@@ -147,7 +147,7 @@ namespace Bacchus.Controller
                     Article.Marque.Name,
                     Article.Prix + "",
                     Article.Quantite + "",
-                    Article.ReferenceArticle });
+                    Article.RefArticle });
 
                     ListView.Items.Add(Item);
 
