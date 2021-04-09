@@ -70,7 +70,7 @@
     <Compile Include="Controller\ControllerDAO\DaoMarque.cs" />
     <Compile Include="Controller\ControllerDAO\DaoFamille.cs" />
     <Compile Include="Controller\ControllerDAO\DaoArticle.cs" />
-    <Compile Include="Controller\ElementBuilderController.cs" />
+    <Compile Include="Controller\ViewController\ElementBuilderController.cs" />
     <Compile Include="Controller\ListController.cs" />
     <Compile Include="Controller\ViewController\ListViewController.cs" />
     <Compile Include="Controller\ViewController\MainViewController.cs" />

@@ -122,7 +122,6 @@ namespace Bacchus
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormImport";
-            this.Load += new System.EventHandler(this.FormImport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -21,10 +21,6 @@ namespace Bacchus
             CsvParseur = new ParseurCsv();
         }
 
-        private void FormImport_Load(object sender, EventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// button allowing to import the csv file and to fill the textbox field with the name of the imported file
@@ -60,6 +56,7 @@ namespace Bacchus
         private void button2_Click(object sender, EventArgs e)
         {
             CsvParseur.ImportCsvFile(true, ProgressBar);
+            
         }
 
         /// <summary>

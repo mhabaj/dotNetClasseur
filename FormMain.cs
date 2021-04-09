@@ -13,27 +13,18 @@ namespace Bacchus
 {
     public partial class FormMain : Form
     {
-        private MainViewController GeneralViewController;
+        private MainViewController GeneralViewController { get; }
         public FormMain()
         {
             InitializeComponent();
             GeneralViewController = new MainViewController(this.ListView1,this.treeView1, this.statusStrip1);
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void importerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form FormImport = new FormImport();
             FormImport.ShowDialog();
+            GeneralViewController.Reload();
         }
 
         private void exporterToolStripMenuItem_Click(object sender, EventArgs e)

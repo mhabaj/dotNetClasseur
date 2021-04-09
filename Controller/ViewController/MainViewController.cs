@@ -38,7 +38,7 @@ namespace Bacchus.Controller
         }
 
         /// <summary>
-        /// Reload Data in the StatusStrip from dataBase
+        /// Reload/Refresh/F5 Data in the view
         /// </summary>
         public void Reload()
         {

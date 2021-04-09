@@ -332,16 +332,7 @@ namespace Bacchus.Controller
                     }
                     else
                     {
-                        Console.WriteLine("-----------------------------------------");
-                        Console.WriteLine("ICIII0:"+Items.SubItems[0].Text);
-                        Console.WriteLine("ICIII1:" + Items.SubItems[1].Text);
-                        Console.WriteLine("ICIII2:" + Items.SubItems[2].Text);
-                        Console.WriteLine("ICIII3:" + Items.SubItems[3].Text);
-                        Console.WriteLine("ICIII4:" + Items.SubItems[4].Text);
-                        Console.WriteLine("ICIII4BIS : " + Items.SubItems[4].Text.Replace(',','.'));
-                        Console.WriteLine("ICIII5:" + Items.SubItems[5].Text);
-                        Console.WriteLine("-----------------------------------------");
-
+                       
                         new DaoArticle().RemoveArticleByRef(
                             new DaoArticle().GetRefArticleByOtherAttributs(
                             Items.SubItems[0].Text, 
@@ -350,14 +341,6 @@ namespace Bacchus.Controller
                             Items.SubItems[4].Text.Replace(',', '.'), 
                             Items.SubItems[5].Text)
                             );
-
-                       
-
-                            /*
-                             Query.Parameters.AddWithValue("@ReferenceSousFamille", FindReference(ArticleToAdd.SousFamille.Name, "RefSousFamille", "SousFamilles"));
-                            Query.Parameters.AddWithValue("@ReferenceMarque", FindReference(ArticleToAdd.Marque.Name, "RefMarque", "Marques"));
-                            */
-
                     }
 
                     for (int i = ListView.SelectedItems.Count - 1; i >= 0; i--)
