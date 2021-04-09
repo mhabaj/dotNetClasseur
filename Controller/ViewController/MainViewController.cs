@@ -10,23 +10,23 @@ namespace Bacchus.Controller
     /// <summary>
     /// Main View controller class
     /// </summary>
-    class GeneralViewController
+    class MainViewController
     {
         public TreeViewController TvController { get; set; }
         public StatusStrip StatusStrip {get; set;}
-        public ListViewPlayerController LvPlayerController { get; set; }
-        public ListViewController LvController { get; set; }
+        public ListViewController LvPlayerController { get; set; }
+        public ListController LvController { get; set; }
 
         /// <summary>
-        /// Constructor 
+        /// Class Constructor 
         /// </summary>
-        /// <param name="ListView"></param>
+        /// <param name="ListView">ListView Object</param>
         /// <param name="TreeView"> TreeView Object </param>
-        /// <param name="StatusStrip"> StatusStrip </param>
-        public GeneralViewController(ListView ListView, TreeView TreeView, StatusStrip StatusStrip)
+        /// <param name="StatusStrip"> StatusStrip Object </param>
+        public MainViewController(ListView ListView, TreeView TreeView, StatusStrip StatusStrip)
         {
-            LvController = new ListViewController(ListView); 
-            TvController = new TreeViewController(TreeView, new ListViewPlayerController(LvController));
+            LvController = new ListController(ListView); 
+            TvController = new TreeViewController(TreeView, new ListViewController(LvController));
             LvController.TvController = TvController;
 
             this.StatusStrip = StatusStrip;

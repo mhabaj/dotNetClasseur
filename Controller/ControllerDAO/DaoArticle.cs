@@ -118,7 +118,7 @@ namespace Bacchus.ControllerDAO
                 {
                     using (var Query = new SQLiteCommand(Connection))
                     {
-                        Query.CommandText = "DELETE FROM ARTICLES WHERE RefArticle = @Reference";
+                        Query.CommandText = "DELETE FROM ARTICLES WHERE RefArticle Like @Reference";
                         Query.Parameters.AddWithValue("@Reference", RefArticleToRemove);
 
                         Query.Prepare();

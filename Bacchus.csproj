@@ -65,16 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerDAO\DaoController.cs" />
-    <Compile Include="ControllerDAO\DaoSousFamille.cs" />
-    <Compile Include="ControllerDAO\DaoMarque.cs" />
-    <Compile Include="ControllerDAO\DaoFamille.cs" />
-    <Compile Include="ControllerDAO\DaoArticle.cs" />
+    <Compile Include="Controller\ControllerDAO\DaoController.cs" />
+    <Compile Include="Controller\ControllerDAO\DaoSousFamille.cs" />
+    <Compile Include="Controller\ControllerDAO\DaoMarque.cs" />
+    <Compile Include="Controller\ControllerDAO\DaoFamille.cs" />
+    <Compile Include="Controller\ControllerDAO\DaoArticle.cs" />
     <Compile Include="Controller\ElementBuilderController.cs" />
-    <Compile Include="Controller\ListViewController.cs" />
-    <Compile Include="Controller\ListViewPlayerController.cs" />
-    <Compile Include="Controller\GeneralViewController.cs" />
-    <Compile Include="Controller\TreeViewController.cs" />
+    <Compile Include="Controller\ListController.cs" />
+    <Compile Include="Controller\ViewController\ListViewController.cs" />
+    <Compile Include="Controller\ViewController\MainViewController.cs" />
+    <Compile Include="Controller\ViewController\TreeViewController.cs" />
     <Compile Include="Controller\ParseurCsv.cs" />
     <Compile Include="FormArticle.cs">
       <SubType>Form</SubType>
@@ -159,7 +159,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Bacchus.SQLite">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

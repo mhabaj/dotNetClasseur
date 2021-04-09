@@ -13,11 +13,11 @@ namespace Bacchus
 {
     public partial class FormMain : Form
     {
-        private GeneralViewController GeneralViewController;
+        private MainViewController GeneralViewController;
         public FormMain()
         {
             InitializeComponent();
-            GeneralViewController = new GeneralViewController(this.ListView1,this.treeView1, this.statusStrip1);
+            GeneralViewController = new MainViewController(this.ListView1,this.treeView1, this.statusStrip1);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
