@@ -18,6 +18,50 @@ namespace Bacchus.ControllerDAO
 
         }
 
+        public string GetRefArticleByOtherAttributs(string Description, int RefSousFamille, int RefMarque, string Prix, string Quantite)
+        {
+            string RefArticleToReturn = "";
+
+            using (var Connection = GetSqLiteConnection())
+            {
+                Connection.Open();
+                try
+                {
+                    using (SQLiteCommand Query = new SQLiteCommand(Connection))
+                    {
+                        Query.CommandText = "SELECT RefArticle FROM Articles WHERE Description = @Description and RefSousFamille = @RefSousFamille " +
+                            "and RefMarque = @RefMarque and PrixHT = @Prix and Quantite = @Quantite";
+                        Query.Parameters.AddWithValue("@Description", Description);
+                        Query.Parameters.AddWithValue("@RefSousFamille", RefSousFamille);
+                        Query.Parameters.AddWithValue("@RefMarque", RefMarque);
+                        Query.Parameters.AddWithValue("@Prix", Prix);
+                        Query.Parameters.AddWithValue("@Quantite", Quantite);
+                        using (SQLiteDataReader ResultSet = Query.ExecuteReader())
+                        {
+                            while (ResultSet.Read())
+                            {
+                                if (!ResultSet.IsDBNull(0))
+                                    Console.WriteLine("LA REF TROUVEE: ", ResultSet["RefArticle"]);
+                                    RefArticleToReturn = Convert.ToString(ResultSet["RefArticle"]);
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show("Problem in GetRefArticleByOtherAttributs function : " + e.Message);
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+            }
+
+            return RefArticleToReturn;
+
+
+        }
+
         /// <summary>
         /// Method that returns the quantity of articles in the database.
         /// </summary>

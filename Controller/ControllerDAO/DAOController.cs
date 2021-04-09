@@ -81,7 +81,7 @@ namespace Bacchus.ControllerDAO
         /// <returns></returns>
         public int FindReference(string Name, string ColumnName, string TableName)
         {
-            int Id = 0; //in the Database the Id is Ref<NameOfTheTable>
+            int idToReturn = 0; //in the Database the idToReturn is Ref<NameOfTheTable>
 
             using (var Connection = GetSqLiteConnection())
             {
@@ -114,7 +114,7 @@ namespace Bacchus.ControllerDAO
                             {
                                 if (!ResultSet.IsDBNull(0))
                                 {
-                                    Id = ResultSet.GetInt32(0); //we read the data and paste it into the Id variable.
+                                    idToReturn = ResultSet.GetInt32(0); //we read the data and paste it into the idToReturn variable.
                                 }
                             }
                         }
@@ -129,11 +129,11 @@ namespace Bacchus.ControllerDAO
                     Connection.Close();
                 }
             }
-            return Id;
+            return idToReturn;
         }
 
         /// <summary>
-        /// Method to find the "SousFamille" using its Famille's Reference(Id) and return the concerned list of SousFamille References(ids).
+        /// Method to find the "SousFamille" using its Famille's Reference(idToReturn) and return the concerned list of SousFamille References(ids).
         /// </summary>
         /// <param name="IdFamille"></param>
         /// <returns></returns>
@@ -178,7 +178,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "SousFamille" using its Reference(Id) and return the concerned SousFamille Object.
+        /// Method to find the "SousFamille" using its Reference(idToReturn) and return the concerned SousFamille Object.
         /// </summary>
         /// <param name="Reference"></param>
         /// <returns></returns>
@@ -214,7 +214,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "Famille" using its Reference(Id) and return the Famille object concerned.
+        /// Method to find the "Famille" using its Reference(idToReturn) and return the Famille object concerned.
         /// </summary>
         /// <param name="Reference"></param>
         /// <returns></returns>
@@ -250,7 +250,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "Marque" using its Reference(Id) and return the Marque object concerned.
+        /// Method to find the "Marque" using its Reference(idToReturn) and return the Marque object concerned.
         /// </summary>
         /// <param name="Reference"></param>
         /// <returns></returns>

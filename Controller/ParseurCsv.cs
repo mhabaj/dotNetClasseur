@@ -15,6 +15,7 @@ namespace Bacchus.Controller
     /// </summary>
     class ParseurCsv
     {
+
         public string Filepath { get; set; } //path of the file in the system.
 
         /// <summary>
@@ -97,6 +98,7 @@ namespace Bacchus.Controller
                     ProgressBar.Update();
                     new DaoArticle().AddArticle(Article); //add Article in the database
                 }
+
                 MessageBox.Show("Les données ont été importées correctement.");
             }
             catch (Exception e)
