@@ -1,10 +1,6 @@
 ﻿using Bacchus.ControllerDAO;
 using Bacchus.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bacchus.Controller
@@ -39,9 +35,9 @@ namespace Bacchus.Controller
         {
             // Update Local Data with new Data from dataBase
             ListArticles = new DaoArticle().GetArticles();
-            ListMarques = new DaoMarque().ListAllMarques();
-            ListSousFamilles = new DaoSousFamille().ListAllSousFamilles();
-            ListFamilles = new DaoFamille().ListAllFamilles();
+            ListMarques = new DaoMarque().GetMarques();
+            ListSousFamilles = new DaoSousFamille().GetSousFamilles();
+            ListFamilles = new DaoFamille().GetFamilles();
         }
         /// <summary>
         /// Initializes ListView 
@@ -302,7 +298,7 @@ namespace Bacchus.Controller
                             }
                         }
                         //remove from dataBase...
-                        new DaoFamille().RemoveFamilleByName(Items.SubItems[0].Text);
+                        new DaoFamille().RemoveFamille(Items.SubItems[0].Text);
                     }
                     else if (TvController.TreeView.SelectedNode.Text.Equals("Marques"))
                     {

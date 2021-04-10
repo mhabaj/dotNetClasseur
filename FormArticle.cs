@@ -24,13 +24,13 @@ namespace Bacchus
             ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
 
             TextBox2.Text = ListViewItem.SubItems[0].Text;
-            SousFamilles TmpListSsFamille = new DaoSousFamille().ListAllSousFamilles();
+            SousFamilles TmpListSsFamille = new DaoSousFamille().GetSousFamilles();
             foreach (SousFamille SsFamille in TmpListSsFamille)
             {
                 ComboBox1.Items.Add(SsFamille.Name);
             }
             ComboBox1.SelectedItem = ListViewItem.SubItems[2].Text;
-            Marques TmpListMarque = new DaoMarque().ListAllMarques();
+            Marques TmpListMarque = new DaoMarque().GetMarques();
             foreach (Marque Marque in TmpListMarque)
             {
                 ComboBox2.Items.Add(Marque.Name);
@@ -79,12 +79,12 @@ namespace Bacchus
             Text = "AJOUT";
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            foreach (SousFamille SousFamille in new DaoSousFamille().ListAllSousFamilles())
+            foreach (SousFamille SousFamille in new DaoSousFamille().GetSousFamilles())
             {
                 ComboBox1.Items.Add(SousFamille.Name);
             }
             if (TNode.Parent != null && TNode.Parent.Parent != null && TNode.Parent.Parent.Text.Equals("Familles")) ComboBox1.SelectedItem = TNode.Text;
-            foreach (Marque Marque in new DaoMarque().ListAllMarques())
+            foreach (Marque Marque in new DaoMarque().GetMarques())
             {
 
                 ComboBox2.Items.Add(Marque.Name);

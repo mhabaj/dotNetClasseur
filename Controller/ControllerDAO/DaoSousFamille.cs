@@ -1,10 +1,6 @@
 ﻿using Bacchus.Model;
 using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bacchus.ControllerDAO
 {
@@ -22,78 +18,10 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to insert a SousFamille into the database by giving a SousFamille in parameter.
+        /// Return all the SousFamilles as a SousFamilles object . (from the database)
         /// </summary>
-        /// <param name="SousFamilleToAdd"></param>
-        public void AddSousFamille(SousFamille SousFamilleToAdd)
-        {
-            if (GetRefObject(SousFamilleToAdd.Name, "RefSousFamille", "SousFamilles") == 0)
-            {
-                int TmpRefFamille = GetRefObject(SousFamilleToAdd.Famille.ToString(), "RefFamille", "Familles");
-                using (var Connection = GetSqLiteConnection())
-                {
-                    Connection.Open();
-                    try
-                    {
-                        using (var Query = new SQLiteCommand(Connection))
-                        {
-                            Query.CommandText = "INSERT INTO SousFamilles VALUES(NULL,@RefFamille,@Name)";
-                            Query.Parameters.AddWithValue("@RefFamille", TmpRefFamille);
-                            Query.Parameters.AddWithValue("@Name", SousFamilleToAdd.Name);
-                            Query.Prepare();
-                            Query.ExecuteNonQuery();
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        System.Windows.Forms.MessageBox.Show("Problem in AddSousFamille function : " + e.Message);
-                    }
-                    finally
-                    {
-                        Connection.Close();
-                    }
-                }
-            }
-
-        }
-
-        /// <summary>
-        /// Method to delete a SousFamille from the database by giving its name in parameter.
-        /// </summary>
-        /// <param name="Name"></param>
-        public void RemoveSousFamilleByName(string Name)
-        {
-            int RefSousFamille = GetRefObject(Name, "RefSousFamille", "SousFamilles");
-            RemoveArticleBySousFamille(RefSousFamille);
-            using (var Connection = GetSqLiteConnection())
-            {
-                Connection.Open();
-                try
-                {
-                    using (var Query = new SQLiteCommand(Connection))
-                    {
-                        Query.CommandText = "DELETE FROM SOUSFAMILLES WHERE Nom = @Name";
-                        Query.Parameters.AddWithValue("@Name", Name);
-                        Query.Prepare();
-                        Query.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception e)
-                {
-                    System.Windows.Forms.MessageBox.Show("Problem in RemoveSousFamilleByName function : " + e.Message);
-                }
-                finally
-                {
-                    Connection.Close();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Method to get all the SousFamilles into a SousFamilles object which is a list of SousFamille. (from the database)
-        /// </summary>
-        /// <returns></returns>
-        public SousFamilles ListAllSousFamilles()
+        /// <returns> SousFamilles Object </returns>
+        public SousFamilles GetSousFamilles()
         {
             SousFamilles SousFamilles = new SousFamilles();
             using (var Connection = GetSqLiteConnection())
@@ -124,12 +52,56 @@ namespace Bacchus.ControllerDAO
             return SousFamilles;
         }
 
+
+
         /// <summary>
-        /// Method to update a SousFamille of the database.
+        /// Add a SousFamille into the database by giving a SousFamille in parameter.
         /// </summary>
-        /// <param name="CurrentName"></param>
-        /// <param name="NewName"></param>
-        /// <param name="NewFamille"></param>
+        /// <param name="SousFamilleToAdd"> SousFamille Object to add </param>
+        public void AddSousFamille(SousFamille SousFamilleToAdd)
+        {
+            if (GetRefObject(SousFamilleToAdd.Name, "RefSousFamille", "SousFamilles") == 0)
+            {
+                using (var Connection = GetSqLiteConnection())
+                {
+                    Connection.Open();
+                    try
+                    {
+                        int TmpRefFamille = GetRefObject(SousFamilleToAdd.Famille.Name, "RefFamille", "Familles");
+
+                        using (var Query = new SQLiteCommand(Connection))
+                        {
+                            Query.CommandText = "INSERT INTO SousFamilles VALUES(NULL,@RefFamille,@Name)";
+                            Query.Parameters.AddWithValue("@RefFamille", TmpRefFamille);
+                            Query.Parameters.AddWithValue("@Name", SousFamilleToAdd.Name);
+                            Query.Prepare();
+                            Query.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Problem in AddSousFamille function ");
+                        Console.WriteLine(e.Message);
+
+                    }
+                    finally
+                    {
+                        Connection.Close();
+                    }
+                }
+            }
+
+        }
+
+
+
+
+        /// <summary>
+        /// Modify a SousFamille in the database.
+        /// </summary>
+        /// <param name="CurrentName">Current SousFamille Name</param>
+        /// <param name="NewName"> New SousFamille Name </param>
+        /// <param name="NewFamille"> New belonging Famille </param>
         public void ModifySousFamille(string CurrentName, string NewName, Famille NewFamille)
         {
             using (var Connection = GetSqLiteConnection())
@@ -149,7 +121,9 @@ namespace Bacchus.ControllerDAO
                 }
                 catch (Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show("Problem in ModifySousFamille function : " + e.Message);
+                    System.Windows.Forms.MessageBox.Show("Problem in ModifySousFamille function");
+                    Console.WriteLine(e.Message);
+
                 }
                 finally
                 {
@@ -158,11 +132,51 @@ namespace Bacchus.ControllerDAO
             }
         }
 
+
+
+
         /// <summary>
-        /// Method the delete an Article from the database by giving the Reference(id) of his SousFamille.
+        /// Remove a SousFamille from the database given it's name.
         /// </summary>
-        /// <param name="ReferenceSousFamille"></param>
-        private void RemoveArticleBySousFamille(int ReferenceSousFamille)
+        /// <param name="Name">string SousFamille Name</param>
+        public void RemoveSousFamilleByName(string Name)
+        {
+            int RefSousFamille = GetRefObject(Name, "RefSousFamille", "SousFamilles");
+            RemoveArticleBySousFamilleRef(RefSousFamille);
+            using (var Connection = GetSqLiteConnection())
+            {
+                Connection.Open();
+                try
+                {
+                    using (var Query = new SQLiteCommand(Connection))
+                    {
+                        Query.CommandText = "DELETE FROM SOUSFAMILLES WHERE Nom LIKE @Name";
+                        Query.Parameters.AddWithValue("@Name", Name);
+
+                        Query.Prepare();
+                        Query.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show("Problem in RemoveSousFamilleByName function ");
+                    Console.WriteLine(e.Message);
+
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+            }
+        }
+
+      
+
+        /// <summary>
+        /// Remove an Article(s) from the database by giving the Reference(id) of the SousFamille.
+        /// </summary>
+        /// <param name="ReferenceSousFamille"> SousFamille Reference </param>
+        private void RemoveArticleBySousFamilleRef(int ReferenceSousFamille)
         {
             using (var Connection = GetSqLiteConnection())
             {
@@ -179,7 +193,9 @@ namespace Bacchus.ControllerDAO
                 }
                 catch (Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show("Problem in RemoveArticleBySousFamille function : " + e.Message);
+                    System.Windows.Forms.MessageBox.Show("Problem in RemoveArticleBySousFamille function ");
+                    Console.WriteLine(e.Message);
+
                 }
                 finally
                 {

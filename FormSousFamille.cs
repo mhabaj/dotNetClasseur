@@ -25,7 +25,7 @@ namespace Bacchus
             Text = "AJOUT";
 
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            foreach (Famille Famille in new DaoFamille().ListAllFamilles())
+            foreach (Famille Famille in new DaoFamille().GetFamilles())
             {
                 ComboBox1.Items.Add(Famille.Name);
             }
@@ -42,7 +42,7 @@ namespace Bacchus
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
 
-            foreach (Famille Famille in new DaoFamille().ListAllFamilles())
+            foreach (Famille Famille in new DaoFamille().GetFamilles())
             {
                 ComboBox1.Items.Add(Famille.Name);
             }
