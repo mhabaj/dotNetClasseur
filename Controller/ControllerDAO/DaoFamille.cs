@@ -15,7 +15,7 @@ namespace Bacchus.ControllerDAO
     {
         public void AddFamille(string Name)
         {
-            if (FindReference(Name, "RefFamille", "Familles") == 0)
+            if (GetRefObject(Name, "RefFamille", "Familles") == 0)
             {
                 using (var Connection = GetSqLiteConnection())
                 {
@@ -49,9 +49,9 @@ namespace Bacchus.ControllerDAO
         public void RemoveFamilleByName(string Name)
         {
             //remove the all the articles of the SousFamille and all the SousFamille of the Famille.
-            foreach (int ReferenceSousFamille in GetRefSousFamilleByFamille(FindReference(Name, "RefFamille", "Familles")))
+            foreach (int ReferenceSousFamille in GetRefSousFamilleByFamille(GetRefObject(Name, "RefFamille", "Familles")))
                 RemoveArticleBySousFamille(ReferenceSousFamille);
-                RemoveSousFamilleByFamille(FindReference(Name, "RefFamille", "Familles"));
+                RemoveSousFamilleByFamille(GetRefObject(Name, "RefFamille", "Familles"));
 
             using (var Connection = GetSqLiteConnection())
             {
@@ -187,7 +187,7 @@ namespace Bacchus.ControllerDAO
                     using (var Query = new SQLiteCommand(Connection))
                     {
                         Query.CommandText = "UPDATE Familles SET Nom = @Name Where RefFamille = @ReferenceFamille";
-                        Query.Parameters.AddWithValue("@ReferenceFamille", FindReference(Name, "RefFamille", "Familles"));
+                        Query.Parameters.AddWithValue("@ReferenceFamille", GetRefObject(Name, "RefFamille", "Familles"));
                         Query.Parameters.AddWithValue("@Name", NewName);
                         Query.Prepare();
                         Query.ExecuteNonQuery();

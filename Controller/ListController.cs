@@ -38,7 +38,7 @@ namespace Bacchus.Controller
         public void ReloadDataFromDatabase()
         {
             // Update Local Data with new Data from dataBase
-            ListArticles = new DaoArticle().ListAllArticles();
+            ListArticles = new DaoArticle().GetArticles();
             ListMarques = new DaoMarque().ListAllMarques();
             ListSousFamilles = new DaoSousFamille().ListAllSousFamilles();
             ListFamilles = new DaoFamille().ListAllFamilles();
@@ -336,8 +336,8 @@ namespace Bacchus.Controller
                         new DaoArticle().RemoveArticleByRef(
                             new DaoArticle().GetRefArticleByOtherAttributs(
                             Items.SubItems[0].Text, 
-                            new DaoController().FindReference(Items.SubItems[2].Text, "RefSousFamille", "SousFamilles"), 
-                            new DaoController().FindReference(Items.SubItems[3].Text, "RefMarque", "Marques"), 
+                            new DaoController().GetRefObject(Items.SubItems[2].Text, "RefSousFamille", "SousFamilles"), 
+                            new DaoController().GetRefObject(Items.SubItems[3].Text, "RefMarque", "Marques"), 
                             Items.SubItems[4].Text.Replace(',', '.'), 
                             Items.SubItems[5].Text)
                             );

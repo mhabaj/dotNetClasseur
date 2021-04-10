@@ -120,7 +120,7 @@ namespace Bacchus.Controller
 
                 var Categories = string.Format("{0};{1};{2};{3};{4};{5}", "Description", "Ref", "Marque", "Famille", "Sous-Famille", "Prix H.T."); //name of the rows
                 CsvFile.AppendLine(Categories);
-                Articles tmpArticles = new DaoArticle().ListAllArticles(); //get all the articles of the database
+                Articles tmpArticles = new DaoArticle().GetArticles(); //get all the articles of the database
                 
                 if (tmpArticles != null)
                 {

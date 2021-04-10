@@ -39,7 +39,7 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Function that allows us to empty all the tables of the database.
+        /// Empty all the tables of the database.
         /// </summary>
         public void EmptyDatabase()
         {
@@ -62,7 +62,9 @@ namespace Bacchus.ControllerDAO
                     }
                     catch (Exception e)
                     {
-                        System.Windows.Forms.MessageBox.Show("Problem in EmptyDatabase function : " + e.Message);
+                        System.Windows.Forms.MessageBox.Show("Problem in EmptyDatabase function ");
+                        Console.WriteLine(e.Message);
+
                     }
                     finally
                     {
@@ -73,13 +75,13 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the reference of any table and collumn name and return it(int).
+        /// Method to find the reference of any object(Famille, SousFamille, Marque) given it's name, the table and column name in database.
         /// </summary>
         /// <param name="Name"></param>
         /// <param name="ColumnName"></param>
         /// <param name="TableName"></param>
-        /// <returns></returns>
-        public int FindReference(string Name, string ColumnName, string TableName)
+        /// <returns>Id of the required object</returns>
+        public int GetRefObject(string Name, string ColumnName, string TableName)
         {
             int idToReturn = 0; //in the Database the idToReturn is Ref<NameOfTheTable>
 
@@ -89,21 +91,20 @@ namespace Bacchus.ControllerDAO
                 try
                 {
                     using (SQLiteCommand Query = new SQLiteCommand(Connection))
-                    {
-                        if (TableName.Equals("Familles"))
+                    {if (TableName.Equals("SousFamilles"))
                         {
-                            Query.CommandText = "SELECT RefFamille FROM FAMILLES WHERE Nom LIKE @NOM";
-                            Query.Parameters.AddWithValue("@Nom", Name);
+                            Query.CommandText = "SELECT RefSousFamille FROM SOUSFAMILLES WHERE Nom LIKE @Name";
+                            Query.Parameters.AddWithValue("@Name", Name);
                         }
-                        else if (TableName.Equals("SousFamilles"))
+                        else if (TableName.Equals("Familles"))
                         {
-                            Query.CommandText = "SELECT RefSousFamille FROM SOUSFAMILLES WHERE Nom LIKE @NOM";
-                            Query.Parameters.AddWithValue("@Nom", Name);
+                            Query.CommandText = "SELECT RefFamille FROM FAMILLES WHERE Nom LIKE @Name";
+                            Query.Parameters.AddWithValue("@Name", Name);
                         }
                         else
                         {
-                            Query.CommandText = "SELECT RefMarque FROM Marques WHERE Nom LIKE @NOM";
-                            Query.Parameters.AddWithValue("@Nom", Name);
+                            Query.CommandText = "SELECT RefMarque FROM Marques WHERE Nom LIKE @Name";
+                            Query.Parameters.AddWithValue("@Name", Name);
                         }
                         Query.Prepare();
 
@@ -122,7 +123,9 @@ namespace Bacchus.ControllerDAO
                 }
                 catch (Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show("Problem in FindReference function : " + e.Message);
+                    System.Windows.Forms.MessageBox.Show("Problem in GetRefObject function ");
+                    Console.WriteLine(e.Message);
+
                 }
                 finally
                 {
@@ -133,10 +136,10 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "SousFamille" using its Famille's Reference(idToReturn) and return the concerned list of SousFamille References(ids).
+        /// Method to find the "SousFamille" using its Famille's Reference(IdFamille) and return the concerned list of SousFamille References(ids).
         /// </summary>
-        /// <param name="IdFamille"></param>
-        /// <returns></returns>
+        /// <param name="IdFamille">Famille reference</param>
+        /// <returns>the concerned list of SousFamille References(ids)</returns>
         public List<int> GetRefSousFamilleByFamille(int IdFamille)
         {
             List<int> RefList = new List<int>();
@@ -167,7 +170,9 @@ namespace Bacchus.ControllerDAO
                 }
                 catch (Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show("Problem in GetRefSousFamilleByFamille function : " + e.Message);
+                    System.Windows.Forms.MessageBox.Show("Problem in GetRefSousFamilleByFamille function ");
+                    Console.WriteLine(e.Message);
+
                 }
                 finally
                 {
@@ -178,22 +183,27 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "SousFamille" using its Reference(idToReturn) and return the concerned SousFamille Object.
+        /// Find the "SousFamille" using its Reference(Reference) and return the concerned SousFamille Object.
         /// </summary>
-        /// <param name="Reference"></param>
-        /// <returns></returns>
+        /// <param name="Reference"> SousFamille Reference </param>
+        /// <returns> the concerned SousFamille Object </returns>
         public SousFamille FindSousFamilleByRef(int Reference)
         {
             SousFamille LaSousFamilleRecherchee = null;
             using(var Connection = GetSqLiteConnection())
             {
                 Connection.Open();
-
+                
                 try
                 {
                     using (var Query = new SQLiteCommand(Connection))
                     {
-                        Query.CommandText = "SELECT * FROM SousFamilles WHERE RefSousFamille=" + Reference;
+                       
+                        Query.CommandText = "SELECT * FROM SousFamilles WHERE RefSousFamille = @IdSousFamille";
+                        Query.Parameters.AddWithValue("@IdSousFamille", Reference);
+                        Query.Prepare();
+
+
                         SQLiteDataReader ResultSet = Query.ExecuteReader();
                         while (ResultSet.Read())
                         {
@@ -203,7 +213,9 @@ namespace Bacchus.ControllerDAO
                 }
                 catch (Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show("Problem in FindSousFamilleByRef function : " + e.Message);
+                    System.Windows.Forms.MessageBox.Show("Problem in FindSousFamilleByRef function");
+                    Console.WriteLine(e.Message);
+
                 }
                 finally
                 {
@@ -214,10 +226,10 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "Famille" using its Reference(idToReturn) and return the Famille object concerned.
+        /// Method to find the "Famille" using its Reference(Reference) and return the Famille object concerned.
         /// </summary>
-        /// <param name="Reference"></param>
-        /// <returns></returns>
+        /// <param name="Reference"> Famille Reference </param>
+        /// <returns> the concerned Famille Object </returns>
         public Famille FindFamilleByRef(int Reference)
         {
             Famille LaFamilleRecherchee = null;
@@ -227,19 +239,25 @@ namespace Bacchus.ControllerDAO
 
                 try
                 {
-                    using (var Command = new SQLiteCommand(Connection))
+                    using (var Query = new SQLiteCommand(Connection))
                     {
-                        Command.CommandText = "SELECT * FROM Familles WHERE RefFamille=" + Reference;
-                        SQLiteDataReader Reader = Command.ExecuteReader();
-                        while (Reader.Read())
+                      
+                        Query.CommandText = "SELECT * FROM Familles WHERE RefFamille = @IdFamille";
+                        Query.Parameters.AddWithValue("@IdFamille", Reference);
+                        Query.Prepare();
+                       
+                        SQLiteDataReader ResultSet = Query.ExecuteReader();
+                        while (ResultSet.Read())
                         {
-                            LaFamilleRecherchee = new Famille(Convert.ToString(Reader["nom"]));
+                            LaFamilleRecherchee = new Famille(Convert.ToString(ResultSet["nom"]));
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show("Problem in FindFamilleByRef function : " + e.Message);
+                    System.Windows.Forms.MessageBox.Show("Problem in FindFamilleByRef function ");
+                    Console.WriteLine(e.Message);
+
                 }
                 finally
                 {
@@ -250,10 +268,10 @@ namespace Bacchus.ControllerDAO
         }
 
         /// <summary>
-        /// Method to find the "Marque" using its Reference(idToReturn) and return the Marque object concerned.
+        /// Find the "Marque" using its Reference(Reference) and return the Marque object concerned.
         /// </summary>
-        /// <param name="Reference"></param>
-        /// <returns></returns>
+        /// <param name="Reference"> Reference Marque </param>
+        /// <returns> Marque Object found </returns>
         public Marque FindMarqueByRef(int Reference)
         {
             Marque LaMarqueRecherchee = null;
@@ -263,10 +281,14 @@ namespace Bacchus.ControllerDAO
 
                 try
                 {
-                    using (var Command = new SQLiteCommand(Connection))
+                    using (var Query = new SQLiteCommand(Connection))
                     {
-                        Command.CommandText = "SELECT * FROM Marques WHERE RefMarque=" + Reference;
-                        SQLiteDataReader Reader = Command.ExecuteReader();
+                        
+                        Query.CommandText = "SELECT * FROM Marques WHERE RefMarque = @IdMarque";
+                        Query.Parameters.AddWithValue("@IdMarque", Reference);
+                        Query.Prepare();
+
+                        SQLiteDataReader Reader = Query.ExecuteReader();
                         while (Reader.Read())
                         {
                             LaMarqueRecherchee = new Marque(Convert.ToString(Reader["nom"]));
@@ -275,7 +297,8 @@ namespace Bacchus.ControllerDAO
                 }
                 catch (Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show("Problem in FindMarqueByRef function : " + e.Message);
+                    System.Windows.Forms.MessageBox.Show("Problem in FindMarqueByRef function ");
+                    Console.WriteLine(e.Message);
                 }
                 finally
                 {

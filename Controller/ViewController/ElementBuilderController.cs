@@ -73,7 +73,7 @@ namespace Bacchus.Controller
                 Item.Group = (ListViewGroup)Groups[SubItemText]; //link the item to the matching group.
             }
         }
-
+        
         /// <summary>
         /// Private nested class used to sort the groups created above in a certain order.
         /// </summary>

@@ -27,9 +27,9 @@ namespace Bacchus.ControllerDAO
         /// <param name="SousFamilleToAdd"></param>
         public void AddSousFamille(SousFamille SousFamilleToAdd)
         {
-            if (FindReference(SousFamilleToAdd.Name, "RefSousFamille", "SousFamilles") == 0)
+            if (GetRefObject(SousFamilleToAdd.Name, "RefSousFamille", "SousFamilles") == 0)
             {
-                int TmpRefFamille = FindReference(SousFamilleToAdd.Famille.ToString(), "RefFamille", "Familles");
+                int TmpRefFamille = GetRefObject(SousFamilleToAdd.Famille.ToString(), "RefFamille", "Familles");
                 using (var Connection = GetSqLiteConnection())
                 {
                     Connection.Open();
@@ -63,7 +63,7 @@ namespace Bacchus.ControllerDAO
         /// <param name="Name"></param>
         public void RemoveSousFamilleByName(string Name)
         {
-            int RefSousFamille = FindReference(Name, "RefSousFamille", "SousFamilles");
+            int RefSousFamille = GetRefObject(Name, "RefSousFamille", "SousFamilles");
             RemoveArticleBySousFamille(RefSousFamille);
             using (var Connection = GetSqLiteConnection())
             {
@@ -140,9 +140,9 @@ namespace Bacchus.ControllerDAO
                     using (var Query = new SQLiteCommand(Connection))
                     {
                         Query.CommandText = "UPDATE SousFamilles SET Nom = @newName, RefFamille = @ReferenceFamille Where RefSousFamille = @ReferenceSousFamille";
-                        Query.Parameters.AddWithValue("@ReferenceSousFamille", FindReference(CurrentName, "RefSousFamille", "SousFamilles"));
+                        Query.Parameters.AddWithValue("@ReferenceSousFamille", GetRefObject(CurrentName, "RefSousFamille", "SousFamilles"));
                         Query.Parameters.AddWithValue("@newName", NewName);
-                        Query.Parameters.AddWithValue("@ReferenceFamille", FindReference(NewFamille.Name, "RefFamille", "Familles"));
+                        Query.Parameters.AddWithValue("@ReferenceFamille", GetRefObject(NewFamille.Name, "RefFamille", "Familles"));
                         Query.Prepare();
                         Query.ExecuteNonQuery();
                     }

@@ -27,7 +27,7 @@ namespace Bacchus.ControllerDAO
         /// <param name="Name"></param>
         public void AddMarque(string Name)
         {
-            if (FindReference(Name, "RefMarque", "Marques") == 0)
+            if (GetRefObject(Name, "RefMarque", "Marques") == 0)
             {
                 using (var Connection = GetSqLiteConnection())
                 {
@@ -91,7 +91,7 @@ namespace Bacchus.ControllerDAO
         public void RemoveMarqueByName(string Name)
         {
             // Delete the articles containing the marque in them.
-            RemoveArticleByMarque(FindReference(Name, "RefMarque", "Marques"));
+            RemoveArticleByMarque(GetRefObject(Name, "RefMarque", "Marques"));
             using (var Connection = GetSqLiteConnection())
             {
                 Connection.Open();
@@ -165,7 +165,7 @@ namespace Bacchus.ControllerDAO
                     using (var Cmd = new SQLiteCommand(Connection))
                     {
                         Cmd.CommandText = "UPDATE Marques SET Nom = @NewName Where RefMarque = @ReferenceMarque";
-                        Cmd.Parameters.AddWithValue("@ReferenceMarque", FindReference(CurrentName, "RefMarque", "Marques"));
+                        Cmd.Parameters.AddWithValue("@ReferenceMarque", GetRefObject(CurrentName, "RefMarque", "Marques"));
                         Cmd.Parameters.AddWithValue("@NewName", NewName);
                         Cmd.Prepare();
                         Cmd.ExecuteNonQuery();
