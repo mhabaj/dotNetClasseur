@@ -19,12 +19,15 @@ namespace Bacchus.Controller
         public Familles ListFamilles { get; set; }
         public SousFamilles ListSousFamilles { get; set; }
 
+        public MainViewController CurrentMVController;
+
         /// <summary>
         /// ListController Constructer and Build ListView
         /// </summary>
         /// <param name="LView">List View</param>
-        public ListController(ListView LView)
+        public ListController(ListView LView, MainViewController MVController)
         {
+            this.CurrentMVController = MVController;
             this.ListView = LView;
             BuildListView();
         }
@@ -194,6 +197,7 @@ namespace Bacchus.Controller
         {
             ReloadDataFromDatabase();
             TvController.TreeViewBuilder();
+            this.CurrentMVController.ReloadStatusStrip();
         }
 
         /// <summary>
@@ -248,6 +252,7 @@ namespace Bacchus.Controller
                     TvController.ExpandNodeContent();
                 }
             }
+            Refresh();
         }
         /// <summary>
         /// Edit element from selected node
@@ -370,8 +375,9 @@ namespace Bacchus.Controller
                         ListView.Items[itm.Index].Remove();
                     }
                 }
-                ReloadDataFromDatabase();
+                
             }
+            Refresh();
         }
 
     }

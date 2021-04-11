@@ -20,7 +20,7 @@ namespace Bacchus.Controller
         /// <param name="StatusStrip"> StatusStrip Object </param>
         public MainViewController(ListView ListView, TreeView TreeView, StatusStrip StatusStrip)
         {
-            LvController = new ListController(ListView); 
+            LvController = new ListController(ListView, this); 
             TvController = new TreeViewController(TreeView, new ListViewController(LvController));
             LvController.TvController = TvController;
 
@@ -38,10 +38,16 @@ namespace Bacchus.Controller
         public void Reload()
         {
             LvController.Refresh();
+            ReloadStatusStrip();
+        }
+
+        public void ReloadStatusStrip()
+        {
             StatusStrip.Items[0].Text = "Articles : " + LvController.ListArticles.TotalSize;
             StatusStrip.Items[1].Text = "Familles : " + LvController.ListFamilles.TotalSize;
             StatusStrip.Items[2].Text = "Sous Familles : " + LvController.ListSousFamilles.TotalSize;
             StatusStrip.Items[3].Text = "Marques : " + LvController.ListMarques.TotalSize;
+
         }
     }
 }
