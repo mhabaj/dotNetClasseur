@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bacchus.Model;
 using System.Windows.Forms;
-using Bacchus.Model;
 
 namespace Bacchus.Controller
 {
@@ -71,33 +66,33 @@ namespace Bacchus.Controller
             //Root
             if (TreeView.SelectedNode.Level == 0)
             {
-                ListViewController.ShowArticlesList();
+                ListViewController.ShowArticles();
             }
             else if (TreeView.SelectedNode.Level == 1) //sub Root levels..:
             {
                 if (TreeView.SelectedNode.Text.ToString().Equals("Marques"))
                 {
-                    ListViewController.ShowMarquesList();
+                    ListViewController.ShowMarques();
                 }
                 else
                 {
-                    ListViewController.ShowFamillesList();
+                    ListViewController.ShowFamilles();
                 }
             }
             else if (TreeView.SelectedNode.Level == 2)
             {
                 if (TreeView.SelectedNode.Parent.Text.Equals("Marques"))
                 {
-                    ListViewController.ShowArticlesListByMarque(TreeView.SelectedNode.Text);
+                    ListViewController.ShowArticlesByMarque(TreeView.SelectedNode.Text);
                 }
                 else
                 {
-                    ListViewController.ShowSousFamillesListByFamille(TreeView.SelectedNode.Text);
+                    ListViewController.ShowSousFamillesByFamille(TreeView.SelectedNode.Text);
                 }
             }
             else if (TreeView.SelectedNode.Level == 3)
             {
-                ListViewController.ShowArticlesListByMarque(TreeView.SelectedNode.Text);
+                ListViewController.ShowArticlesByMarque(TreeView.SelectedNode.Text);
             }
            
         }
@@ -116,8 +111,8 @@ namespace Bacchus.Controller
         /// <summary>
         /// Modify Node text content in the tree
         /// </summary>
-        /// <param name="Old"></param>
-        /// <param name="New"></param>
+        /// <param name="Old">Old Name</param>
+        /// <param name="New">New Name</param>
         public void ModifyNode(string Old, string New)
         {
             foreach (TreeNode Node in TreeView.SelectedNode.Nodes)
@@ -133,9 +128,9 @@ namespace Bacchus.Controller
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="Sender"></param>
-        /// <param name="E"></param>
-        private void TreeViewAfterSelect(object Sender, TreeViewEventArgs E)
+        /// <param name="Sender">Event Sender</param>
+        /// <param name="EventArgs">Args of event</param>
+        private void TreeViewAfterSelect(object Sender, TreeViewEventArgs EventArgs)
         {
             ExpandNodeContent();
         }

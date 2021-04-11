@@ -70,10 +70,10 @@
     <Compile Include="Controller\ControllerDAO\DaoMarque.cs" />
     <Compile Include="Controller\ControllerDAO\DaoFamille.cs" />
     <Compile Include="Controller\ControllerDAO\DaoArticle.cs" />
-    <Compile Include="Controller\ViewController\ElementBuilderController.cs" />
+    <Compile Include="Controller\ViewController\ElementSortController.cs" />
     <Compile Include="Controller\ListController.cs" />
     <Compile Include="Controller\ViewController\ListViewController.cs" />
-    <Compile Include="Controller\ViewController\MainViewController.cs" />
+    <Compile Include="Controller\MainViewController.cs" />
     <Compile Include="Controller\ViewController\TreeViewController.cs" />
     <Compile Include="Controller\FileManager.cs" />
     <Compile Include="FormArticle.cs">
@@ -100,17 +100,17 @@
     <Compile Include="FormFamille.Designer.cs">
       <DependentUpon>FormFamille.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormExport.cs">
+    <Compile Include="ExportDialogue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormExport.Designer.cs">
-      <DependentUpon>FormExport.cs</DependentUpon>
+    <Compile Include="ExportDialogue.Designer.cs">
+      <DependentUpon>ExportDialogue.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormImport.cs">
+    <Compile Include="ImportDialogue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormImport.Designer.cs">
-      <DependentUpon>FormImport.cs</DependentUpon>
+    <Compile Include="ImportDialogue.Designer.cs">
+      <DependentUpon>ImportDialogue.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -134,14 +134,14 @@
     <EmbeddedResource Include="FormSousFamille.resx">
       <DependentUpon>FormSousFamille.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormExport.resx">
-      <DependentUpon>FormExport.cs</DependentUpon>
+    <EmbeddedResource Include="ExportDialogue.resx">
+      <DependentUpon>ExportDialogue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFamille.resx">
       <DependentUpon>FormFamille.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormImport.resx">
-      <DependentUpon>FormImport.cs</DependentUpon>
+    <EmbeddedResource Include="ImportDialogue.resx">
+      <DependentUpon>ImportDialogue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

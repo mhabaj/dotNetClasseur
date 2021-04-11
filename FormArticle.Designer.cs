@@ -52,7 +52,7 @@ namespace Bacchus
             this.TextBox1.ForeColor = System.Drawing.Color.Navy;
             this.TextBox1.Location = new System.Drawing.Point(273, 31);
             this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(244, 22);
+            this.TextBox1.Size = new System.Drawing.Size(404, 22);
             this.TextBox1.TabIndex = 0;
             // 
             // TextBox2
@@ -60,10 +60,10 @@ namespace Bacchus
             this.TextBox2.BackColor = System.Drawing.Color.White;
             this.TextBox2.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox2.ForeColor = System.Drawing.Color.Black;
-            this.TextBox2.Location = new System.Drawing.Point(273, 87);
+            this.TextBox2.Location = new System.Drawing.Point(273, 88);
             this.TextBox2.Multiline = true;
             this.TextBox2.Name = "TextBox2";
-            this.TextBox2.Size = new System.Drawing.Size(404, 44);
+            this.TextBox2.Size = new System.Drawing.Size(404, 38);
             this.TextBox2.TabIndex = 1;
             // 
             // TextBox3
@@ -73,7 +73,7 @@ namespace Bacchus
             this.TextBox3.ForeColor = System.Drawing.Color.Navy;
             this.TextBox3.Location = new System.Drawing.Point(273, 237);
             this.TextBox3.Name = "TextBox3";
-            this.TextBox3.Size = new System.Drawing.Size(96, 21);
+            this.TextBox3.Size = new System.Drawing.Size(297, 21);
             this.TextBox3.TabIndex = 4;
             // 
             // TextBox4
@@ -81,9 +81,9 @@ namespace Bacchus
             this.TextBox4.BackColor = System.Drawing.Color.White;
             this.TextBox4.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox4.ForeColor = System.Drawing.Color.Navy;
-            this.TextBox4.Location = new System.Drawing.Point(273, 283);
+            this.TextBox4.Location = new System.Drawing.Point(273, 279);
             this.TextBox4.Name = "TextBox4";
-            this.TextBox4.Size = new System.Drawing.Size(96, 21);
+            this.TextBox4.Size = new System.Drawing.Size(284, 21);
             this.TextBox4.TabIndex = 5;
             // 
             // ReferenceLabel
@@ -91,7 +91,7 @@ namespace Bacchus
             this.ReferenceLabel.AutoSize = true;
             this.ReferenceLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReferenceLabel.ForeColor = System.Drawing.Color.Black;
-            this.ReferenceLabel.Location = new System.Drawing.Point(172, 31);
+            this.ReferenceLabel.Location = new System.Drawing.Point(172, 36);
             this.ReferenceLabel.Name = "ReferenceLabel";
             this.ReferenceLabel.Size = new System.Drawing.Size(95, 13);
             this.ReferenceLabel.TabIndex = 6;
@@ -102,7 +102,7 @@ namespace Bacchus
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DescriptionLabel.ForeColor = System.Drawing.Color.Black;
-            this.DescriptionLabel.Location = new System.Drawing.Point(157, 87);
+            this.DescriptionLabel.Location = new System.Drawing.Point(156, 102);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(111, 13);
             this.DescriptionLabel.TabIndex = 7;
@@ -124,7 +124,7 @@ namespace Bacchus
             this.MarqueLabel.AutoSize = true;
             this.MarqueLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MarqueLabel.ForeColor = System.Drawing.Color.Black;
-            this.MarqueLabel.Location = new System.Drawing.Point(196, 195);
+            this.MarqueLabel.Location = new System.Drawing.Point(196, 200);
             this.MarqueLabel.Name = "MarqueLabel";
             this.MarqueLabel.Size = new System.Drawing.Size(71, 13);
             this.MarqueLabel.TabIndex = 9;
@@ -135,7 +135,7 @@ namespace Bacchus
             this.PrixLabel.AutoSize = true;
             this.PrixLabel.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrixLabel.ForeColor = System.Drawing.Color.Black;
-            this.PrixLabel.Location = new System.Drawing.Point(173, 237);
+            this.PrixLabel.Location = new System.Drawing.Point(173, 241);
             this.PrixLabel.Name = "PrixLabel";
             this.PrixLabel.Size = new System.Drawing.Size(95, 13);
             this.PrixLabel.TabIndex = 10;
@@ -169,9 +169,9 @@ namespace Bacchus
             this.ComboBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboBox1.ForeColor = System.Drawing.Color.Black;
             this.ComboBox1.FormattingEnabled = true;
-            this.ComboBox1.Location = new System.Drawing.Point(273, 158);
+            this.ComboBox1.Location = new System.Drawing.Point(273, 154);
             this.ComboBox1.Name = "ComboBox1";
-            this.ComboBox1.Size = new System.Drawing.Size(270, 23);
+            this.ComboBox1.Size = new System.Drawing.Size(347, 23);
             this.ComboBox1.TabIndex = 13;
             // 
             // ComboBox2
@@ -182,7 +182,7 @@ namespace Bacchus
             this.ComboBox2.FormattingEnabled = true;
             this.ComboBox2.Location = new System.Drawing.Point(273, 195);
             this.ComboBox2.Name = "ComboBox2";
-            this.ComboBox2.Size = new System.Drawing.Size(244, 24);
+            this.ComboBox2.Size = new System.Drawing.Size(329, 24);
             this.ComboBox2.TabIndex = 14;
             // 
             // FormArticle
@@ -206,7 +206,7 @@ namespace Bacchus
             this.Controls.Add(this.TextBox1);
             this.Font = new System.Drawing.Font("Felix Titling", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.MintCream;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormArticle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

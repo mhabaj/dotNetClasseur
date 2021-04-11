@@ -45,7 +45,6 @@ namespace Bacchus
             this.TextBox1.Name = "TextBox1";
             this.TextBox1.Size = new System.Drawing.Size(570, 137);
             this.TextBox1.TabIndex = 0;
-            this.TextBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // DescriptionLabelMarque
             // 
@@ -93,6 +92,7 @@ namespace Bacchus
             this.Controls.Add(this.TextBox1);
             this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMarque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Bacchus.Controller
 {
@@ -20,7 +15,7 @@ namespace Bacchus.Controller
         /// <summary>
         /// Class Constructor 
         /// </summary>
-        /// <param name="ListView">ListView Object</param>
+        /// <param name="ListView">DataList Object</param>
         /// <param name="TreeView"> TreeView Object </param>
         /// <param name="StatusStrip"> StatusStrip Object </param>
         public MainViewController(ListView ListView, TreeView TreeView, StatusStrip StatusStrip)

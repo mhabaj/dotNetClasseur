@@ -13,16 +13,16 @@ namespace Bacchus.Controller
 
         public ListView ListView { get; set; }
         public TreeViewController TvController { get; set; }
-        public ElementBuilderController EbController { get; set; }
+        public ElementSortController EbController { get; set; }
         public Articles ListArticles { get; set; }
         public Marques ListMarques { get; set; }
         public Familles ListFamilles { get; set; }
         public SousFamilles ListSousFamilles { get; set; }
 
         /// <summary>
-        /// ListController Constructer
+        /// ListController Constructer and Build ListView
         /// </summary>
-        /// <param name="LView"></param>
+        /// <param name="LView">List View</param>
         public ListController(ListView LView)
         {
             this.ListView = LView;
@@ -40,22 +40,27 @@ namespace Bacchus.Controller
             ListFamilles = new DaoFamille().GetFamilles();
         }
         /// <summary>
-        /// Initializes ListView 
+        /// Initializes DataList 
         /// </summary>
         public void BuildListView()
         {
-            EbController = new ElementBuilderController(ListView);
+            EbController = new ElementSortController(ListView);
             ReloadDataFromDatabase();
+
             //Specific Parameters: show lines, sort..
+            ListView.FullRowSelect = true;
+            ListView.GridLines = true;
             ListView.AllowColumnReorder = true;
             ListView.Sorting = SortOrder.Descending;
-            ListView.GridLines = true;
-            ListView.FullRowSelect = true;
             ListView.Sort();
-            ListView.ColumnClick += new ColumnClickEventHandler(ListView1ColumnClick);
+
+
             ListView.MouseClick += new MouseEventHandler(ListView1MouseClick);
-            ListView.KeyDown += new KeyEventHandler(ListView1KeyPressed);
             ListView.MouseDoubleClick += new MouseEventHandler(ListView1MouseDoubleClick);
+            ListView.ColumnClick += new ColumnClickEventHandler(ListView1ColumnClick);
+
+            ListView.KeyDown += new KeyEventHandler(ListView1KeyPressed);
+
         }
         /// <summary>
         /// Detects Double Click event on element
@@ -64,7 +69,7 @@ namespace Bacchus.Controller
         /// <param name="Event"></param>
         private void ListView1MouseDoubleClick(object Sender, MouseEventArgs Event)
         {
-            UpdateElement();
+            ModifyEntry();
         }
 
         /// <summary>
@@ -76,15 +81,15 @@ namespace Bacchus.Controller
         {
             if(Event.KeyCode == Keys.Delete)
             {
-                DeleteElement();
+                RemoveEntry();
             }
             if(Event.KeyCode == Keys.F5)
             {
                 Refresh();
             }
-            if(Event.KeyCode == Keys.Enter)
+            if(Event.KeyCode == Keys.Enter || Event.KeyCode == Keys.Space)
             {
-                UpdateElement();
+                ModifyEntry();
             }
         }
         /// <summary>
@@ -96,12 +101,30 @@ namespace Bacchus.Controller
         {
             if(Event.Button == MouseButtons.Right)
             {
+
                 ListView.ContextMenu = new ContextMenu();
-                ListView.ContextMenu.MenuItems.Add(new MenuItem("Ajouter", MenuItemAddEvent));
+                ListView.ContextMenu.MenuItems.Add(new MenuItem("ajouter", MenuItemAddEvent));
                 ListView.ContextMenu.MenuItems.Add("-");
-                ListView.ContextMenu.MenuItems.Add(new MenuItem("modifier", MenuItemUpdateEvent));
-                ListView.ContextMenu.MenuItems.Add(new MenuItem("supprimer", MenuItemDeleteEvent));
-                ListView.ContextMenu.Show(ListView, new System.Drawing.Point(Event.X, Event.Y));
+
+                if (ListView.SelectedItems.Count > 0)
+                {
+                    ListView.ContextMenu.MenuItems.Add(new MenuItem("modifier", MenuItemUpdateEvent));
+                    ListView.ContextMenu.MenuItems.Add(new MenuItem("supprimer", MenuItemDeleteEvent));
+                    ListView.ContextMenu.Show(ListView, new System.Drawing.Point(Event.X, Event.Y));
+                }
+                else
+                {
+                    
+                    MenuItem MenuItemModify = new MenuItem("modifier", MenuItemUpdateEvent);
+                    MenuItem MenuItemDelete = new MenuItem("supprimer", MenuItemDeleteEvent);
+                    
+                    MenuItemModify.Enabled = false;
+                    MenuItemDelete.Enabled = false;
+
+                    ListView.ContextMenu.MenuItems.Add(MenuItemModify);
+                    ListView.ContextMenu.MenuItems.Add(MenuItemDelete);
+                    ListView.ContextMenu.Show(ListView, new System.Drawing.Point(Event.X, Event.Y));
+                }
             }
         }
         /// <summary>
@@ -111,7 +134,7 @@ namespace Bacchus.Controller
         /// <param name="Event"></param>
         private void MenuItemAddEvent(object Sender, EventArgs Event)
         {
-            AddElement();
+            AddNewEntry();
         }
         /// <summary>
         /// Calls UpdateElement if action is requested (via right mouse click for example)
@@ -120,7 +143,7 @@ namespace Bacchus.Controller
         /// <param name="Event"></param>
         private void MenuItemUpdateEvent(object Sender, EventArgs Event)
         {
-            UpdateElement();
+            ModifyEntry();
         }
         /// <summary>
         /// Calls DeleteElement if action is requested (via right mouse click for example)
@@ -129,7 +152,7 @@ namespace Bacchus.Controller
         /// <param name="Event"></param>
         private void MenuItemDeleteEvent(object Sender, EventArgs Event)
         {
-            DeleteElement();
+            RemoveEntry();
         }
         /// <summary>
         /// Sort on column click
@@ -159,13 +182,13 @@ namespace Bacchus.Controller
         /// </summary>
         /// <param name="Prev"></param>
         /// <param name="New"></param>
-        public void UpdateElementPart(string Prev, string New)
+        public void UpdateNode(string Prev, string New)
         {
             ReloadDataFromDatabase();
             TvController.ModifyNode(Prev, New);
         }
         /// <summary>
-        /// Refresh TreeView
+        /// Refresh TreeView from database
         /// </summary>
         public void Refresh()
         {
@@ -185,7 +208,7 @@ namespace Bacchus.Controller
         /// <summary>
         /// Add a new Entry from the selected node
         /// </summary>
-        private void AddElement()
+        private void AddNewEntry()
         {
             // Look for the right row type and add a new element into it
             if (TvController.TreeView.SelectedNode.Text.Equals("Familles"))
@@ -206,18 +229,20 @@ namespace Bacchus.Controller
             }
             else if (TvController.TreeView.SelectedNode.Parent != null && TvController.TreeView.SelectedNode.Parent.Text.Equals("Familles"))
             {
+
                 FormSousFamille FormSousFamille = new FormSousFamille(TvController.TreeView.SelectedNode.Text);
                 FormSousFamille.ShowDialog();
-                if (!FormSousFamille.ToAdd.Equals(""))
+                if (FormSousFamille.ToAdd.Equals("") == false)
+                {
                     UpdateDisplayInWindow(FormSousFamille.ToAdd);
-
+                }
             }
             else
             {
                 FormArticle FormArticle = new FormArticle(TvController.TreeView.SelectedNode);
                 FormArticle.ShowDialog();
 
-                if (FormArticle.Mark)
+                if (FormArticle.Chosen == true)
                 {
                     ReloadDataFromDatabase();
                     TvController.ExpandNodeContent();
@@ -227,7 +252,7 @@ namespace Bacchus.Controller
         /// <summary>
         /// Edit element from selected node
         /// </summary>
-        private void UpdateElement()
+        private void ModifyEntry()
         {
             //Look for the current selected row/node and edit the element depending on the Object type (Familles, Marques..)
             if (ListView.SelectedItems.Count == 0) return;
@@ -235,20 +260,20 @@ namespace Bacchus.Controller
             {
                 FormArticle FormArticle = new FormArticle(ListView.SelectedItems[0]);
                 FormArticle.ShowDialog();
-                if (FormArticle.Mark)
+                if (FormArticle.Chosen)
                 {
                     ReloadDataFromDatabase();
                     TvController.ExpandNodeContent();
                 }
             }
-            else if (TvController.TreeView.SelectedNode.Text.Equals("Familles"))
+            else if (TvController.TreeView.SelectedNode.Text.Equals("Familles"))  //for Familles, toggle form Famille then update
             {
 
                 FormFamille FormFamille = new FormFamille(ListView.SelectedItems[0]);
                 FormFamille.ShowDialog();
-                if (!FormFamille.New.Equals("") && !FormFamille.OldDescription.Equals(""))
+                if (FormFamille.NewName.Equals("") == false && FormFamille.OldDescription.Equals("") == false)
                 {
-                    UpdateElementPart(FormFamille.OldDescription, FormFamille.New);
+                    UpdateNode(FormFamille.OldDescription, FormFamille.NewName);
                     
                 }
             }
@@ -258,17 +283,17 @@ namespace Bacchus.Controller
                 FormMarque.ShowDialog();
                 if (!FormMarque.New.Equals("") && !FormMarque.OldDescription.Equals(""))
                 {
-                    UpdateElementPart(FormMarque.OldDescription, FormMarque.New);
+                    UpdateNode(FormMarque.OldDescription, FormMarque.New);
                     
                 }
             }
-            else if (TvController.TreeView.SelectedNode.Parent.Text.Equals("Familles"))
+            else if (TvController.TreeView.SelectedNode.Parent.Text.Equals("Familles")) //For Familles parent (root)
             {
                 FormSousFamille FormSousFamille = new FormSousFamille(ListView.SelectedItems[0], TvController.TreeView.SelectedNode.Text);
                 FormSousFamille.ShowDialog();
                 if (!FormSousFamille.New.Equals("") && !FormSousFamille.OldDescription.Equals(""))
                 {
-                    UpdateElementPart(FormSousFamille.OldDescription, FormSousFamille.New);
+                    UpdateNode(FormSousFamille.OldDescription, FormSousFamille.New);
                     
                 }
             }
@@ -276,14 +301,14 @@ namespace Bacchus.Controller
         /// <summary>
         /// Look for the selected row and delete the element.
         /// </summary>
-        private void DeleteElement()
+        private void RemoveEntry()
         {
             // Look for the selected object and delete the entry (after confirmation message)
             if (ListView.SelectedItems.Count == 0) return;
             var Confirmation = MessageBox.Show("SUPPRIMER ? ", "Suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (Confirmation == DialogResult.Yes)
             {
-                //remove from the ListView each specific Node type
+                //remove from the DataList each specific Node type
                 foreach (ListViewItem Items in ListView.SelectedItems)
                 {
                     if (TvController.TreeView.SelectedNode.Text.Equals("Familles"))

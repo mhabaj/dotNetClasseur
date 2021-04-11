@@ -1,12 +1,9 @@
 ﻿using Bacchus.ControllerDAO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Bacchus.Model;
+using System;
 using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Bacchus.Controller
 {
@@ -19,45 +16,45 @@ namespace Bacchus.Controller
         public string Filepath { get; set; } //path of the file in the system.
 
         /// <summary>
-        /// default constructor of class, does nothing.
+        /// Default constructor of class
         /// </summary>
         public FileManager()
         {
-
+            
         }
 
         /// <summary>
-        /// Method to import a csv file, read it and use it's data to fill the database, there are 2 integration modes (by adding the data to the database or overwriting the database wwith new data).
+        /// Import a csv file, read it and use it's data to fill the database, there are 2 integration modes (by adding the data to the database or overwriting the database wwith new data).
         /// </summary>
-        /// <param name="IntegrationMode"></param>
-        /// <param name="ProgressBar"></param>
+        /// <param name="IntegrationMode">True : overwrite, false: append</param>
+        /// <param name="ProgressBar">progress bar to fill</param>
         public void ImportCsvFile(bool IntegrationMode, ProgressBar ProgressBar)
         {
-            //set the ProgressBar values
-            ProgressBar.Value = 0;
-            ProgressBar.Refresh();
-            ProgressBar.Step = 1;
-
-            if (IntegrationMode == true) //verify the integration mode chosen by the user true = overwrite with new data, false = add without overwriting.
-            {
-                DaoController DAO = new DaoController();
-                DAO.EmptyDatabase();
-            }
-
+          
             //variables that will recieve that data and that will be used in a foreach loop.
             Familles Familles = new Familles();
             Marques Marques = new Marques();
             SousFamilles SousFamilles = new SousFamilles();
             Articles Articles = new Articles();
 
+            //set the ProgressBar values
+            ProgressBar.Value = 0;
+            ProgressBar.Refresh();
+            ProgressBar.Step = 1;
+
             try
             {
-                using (var Read = new StreamReader(Filepath, Encoding.Default))
+                if (IntegrationMode == true) //verify the integration mode chosen by the user true = overwrite with new data, false = add without overwriting.
+                {
+                    new DaoController().EmptyDatabase();
+                }
+
+                using (var DataSource = new StreamReader(Filepath, Encoding.Default))
                 {
                     //section of code that reads the csv file and set a separator which is ";" in this case.
-                    while (!Read.EndOfStream)
+                    while (!DataSource.EndOfStream)
                     {
-                        var Separator = Read.ReadLine().Split(';');
+                        var Separator = DataSource.ReadLine().Split(';');
                         if (Double.TryParse(Separator[5], out double number))
                         {
                             Famille Famille = new Famille(Separator[3]);
@@ -76,42 +73,47 @@ namespace Bacchus.Controller
                 //section of the code that go through each variables and constructs the whole family into the database
                 foreach (Famille Famille in Familles)
                 {
+                    new DaoFamille().AddFamille(Famille.Name); //add Famille in the database
+
                     ProgressBar.PerformStep();
                     ProgressBar.Update();
-                    new DaoFamille().AddFamille(Famille.Name); //add Famille in the database
                 }
                 foreach (Marque Marque in Marques)
                 {
+                    new DaoMarque().AddMarque(Marque.Name); //add Marche in the database
+
                     ProgressBar.PerformStep();
                     ProgressBar.Update();
-                    new DaoMarque().AddMarque(Marque.Name); //add Marche in the database
                 }
                 foreach (SousFamille SousFamille in SousFamilles)
                 {
+                    new DaoSousFamille().AddSousFamille(SousFamille); //add SousFamille in the database
+
                     ProgressBar.PerformStep();
                     ProgressBar.Update();
-                    new DaoSousFamille().AddSousFamille(SousFamille); //add SousFamille in the database
                 }
                 foreach (Article Article in Articles)
                 {
+                    new DaoArticle().AddArticle(Article); //add Article in the database
+
                     ProgressBar.PerformStep();
                     ProgressBar.Update();
-                    new DaoArticle().AddArticle(Article); //add Article in the database
                 }
 
-                MessageBox.Show("Les données ont été importées correctement.");
+                MessageBox.Show("Données importées correctement.");
             }
             catch (Exception e)
             {
-                MessageBox.Show("ERREUR : fichier non selectionné ou non valide:");
+                MessageBox.Show("ERREUR : fichier non selectionné ou non valide! ");
+                ProgressBar.Visible = false;
                 Console.WriteLine(e.Message);
             }
         }
 
         /// <summary>
-        /// Method used to export the data of the sqllite database into a csv file, you must specify the name of the file in the parameters.
+        /// Export the data of the sqllite database into a csv file, you must specify the name of the file in the parameters.
         /// </summary>
-        /// <param name="NameOfExportedFile"></param>
+        /// <param name="NameOfExportedFile"> Name of the exported File </param>
         public void ExportCsvFile(string NameOfExportedFile)
         {
             try
@@ -135,7 +137,7 @@ namespace Bacchus.Controller
                 }
                 else
                 {
-                    MessageBox.Show("problèmes avec les données à importer : donnée vide.");
+                    MessageBox.Show("Problèmes avec les données à importer : données vide.");
                 }
             }
             catch (Exception e)
@@ -143,8 +145,6 @@ namespace Bacchus.Controller
                 MessageBox.Show("ERREUR : export impossible");
                 Console.WriteLine(e.Message);
             }
-
-
         }
     }
 }

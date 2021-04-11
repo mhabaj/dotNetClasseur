@@ -39,9 +39,7 @@ D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchu
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.csprojAssemblyReference.cache
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.FormArticle.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.FormSousFamille.resources
-D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.FormExport.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.FormFamille.resources
-D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.FormImport.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.FormMain.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.FormMarque.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.Properties.Resources.resources
@@ -50,3 +48,5 @@ D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchu
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.csproj.CopyComplete
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.exe
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.pdb
+D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.ExportDialogue.resources
+D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Debug\Bacchus.ImportDialogue.resources

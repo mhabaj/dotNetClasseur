@@ -54,11 +54,11 @@ namespace Bacchus
             // 
             this.TextBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox1.ForeColor = System.Drawing.Color.Black;
-            this.TextBox1.Location = new System.Drawing.Point(145, 78);
+            this.TextBox1.Location = new System.Drawing.Point(172, 170);
             this.TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TextBox1.Multiline = true;
             this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(474, 110);
+            this.TextBox1.Size = new System.Drawing.Size(462, 61);
             this.TextBox1.TabIndex = 1;
             // 
             // DescriptionLabelSousFamille
@@ -66,7 +66,7 @@ namespace Bacchus
             this.DescriptionLabelSousFamille.AutoSize = true;
             this.DescriptionLabelSousFamille.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DescriptionLabelSousFamille.ForeColor = System.Drawing.Color.Black;
-            this.DescriptionLabelSousFamille.Location = new System.Drawing.Point(28, 78);
+            this.DescriptionLabelSousFamille.Location = new System.Drawing.Point(39, 193);
             this.DescriptionLabelSousFamille.Name = "DescriptionLabelSousFamille";
             this.DescriptionLabelSousFamille.Size = new System.Drawing.Size(111, 13);
             this.DescriptionLabelSousFamille.TabIndex = 3;
@@ -77,7 +77,7 @@ namespace Bacchus
             this.FamilleLabelSousFamille.AutoSize = true;
             this.FamilleLabelSousFamille.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FamilleLabelSousFamille.ForeColor = System.Drawing.Color.Black;
-            this.FamilleLabelSousFamille.Location = new System.Drawing.Point(60, 225);
+            this.FamilleLabelSousFamille.Location = new System.Drawing.Point(71, 94);
             this.FamilleLabelSousFamille.Name = "FamilleLabelSousFamille";
             this.FamilleLabelSousFamille.Size = new System.Drawing.Size(79, 13);
             this.FamilleLabelSousFamille.TabIndex = 4;
@@ -99,10 +99,10 @@ namespace Bacchus
             this.ComboBox1.BackColor = System.Drawing.Color.White;
             this.ComboBox1.ForeColor = System.Drawing.Color.Black;
             this.ComboBox1.FormattingEnabled = true;
-            this.ComboBox1.Location = new System.Drawing.Point(145, 225);
+            this.ComboBox1.Location = new System.Drawing.Point(172, 91);
             this.ComboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ComboBox1.Name = "ComboBox1";
-            this.ComboBox1.Size = new System.Drawing.Size(254, 22);
+            this.ComboBox1.Size = new System.Drawing.Size(405, 22);
             this.ComboBox1.TabIndex = 6;
             // 
             // FormSousFamille
@@ -119,6 +119,7 @@ namespace Bacchus
             this.Controls.Add(this.ConfirmerButton);
             this.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormSousFamille";

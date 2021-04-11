@@ -1,48 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bacchus.ControllerDAO;
+using System;
 using System.Windows.Forms;
-using Bacchus.ControllerDAO;
 
 namespace Bacchus
 {
+    /// <summary>
+    /// form marque view class.
+    /// </summary>
     public partial class FormMarque : Form
     {
         public string New { get; set; }
         public string OldDescription { get; set; }
         public string ToAdd { get; set; }
+        private int Status;
 
+        /// <summary>
+        /// default constructor of the class that initialises the textfields and the components.
+        /// </summary>
         public FormMarque()
         {
             ToAdd = "";
             InitializeComponent();
-            Text = "AJOUT";
+            this.Text = "Ajouter une nouvelle Marque";
+            Status = 0;
+            label1.Text = "Ajouter la nouvelle Marque..";
         }
-
+        /// <summary>
+        /// constructor that initialises the form with a listitemview in parameter.
+        /// </summary>
+        /// <param name="ListViewItem"></param>
         public FormMarque(ListViewItem ListViewItem)
         {
             New = OldDescription = "";
             InitializeComponent();
-            Text = "MODIFICATION";
+            Text = "Modifier la Marque";
             TextBox1.Text = OldDescription = ListViewItem.SubItems[0].Text;
+            Status = 1;
+            label1.Text = "Modifier la Marque..";
+
         }
 
-        private void ConfirmerButton_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// confirm button, to confirm adding or modifications.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ConfirmerButton_Click_1(object Sender, EventArgs Event)
         {
             if (!TextBox1.Text.Equals("") && (TextBox1.Text.Length < 100))
             {
-                if (Text.Equals("AJOUT"))
+                if (Status == 0)
                 {
                     new DaoMarque().AddMarque(TextBox1.Text);
                     ToAdd = TextBox1.Text;
                     Close();
                 }
-                else if (Text.Equals("MODIFICATION"))
+                else if (Status == 1)
                 {
                     new DaoMarque().ModifyMarque(OldDescription, TextBox1.Text);
                     New = TextBox1.Text;
@@ -53,11 +66,6 @@ namespace Bacchus
             {
                 MessageBox.Show("Erreur : champs vide ou > 100 caractères.");
             }
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

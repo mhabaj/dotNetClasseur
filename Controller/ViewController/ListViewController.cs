@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bacchus.Model;
 using System.Windows.Forms;
-using Bacchus.Model;
 
 namespace Bacchus.Controller
 {
@@ -18,17 +13,17 @@ namespace Bacchus.Controller
         /// <summary>
         /// Class Constructor
         /// </summary>
-        /// <param name="LvController">ListController Object</param>
-        public ListViewController(ListController LvController)
+        /// <param name="ListController">ListController Object</param>
+        public ListViewController(ListController ListController)
         {
-            this.ListController = LvController;
-            this.ListView = ListController.ListView;
+            this.ListController = ListController;
+            this.ListView = this.ListController.ListView;
         }
 
         /// <summary>
-        /// Adds Articles Data to ListView
+        /// Adds Articles & Table structure to ListView
         /// </summary>
-        public void ShowArticlesList()
+        public void ShowArticles()
         {
             ListView.BeginUpdate();
             ListView.Clear(); 
@@ -49,23 +44,23 @@ namespace Bacchus.Controller
             }
 
             // Add columns names for every Attribute 
-            ListView.Columns.Add("Description", 0, HorizontalAlignment.Center);
-            ListView.Columns.Add("Famille", 0, HorizontalAlignment.Center);
-            ListView.Columns.Add("SousFamille", 0, HorizontalAlignment.Center);
-            ListView.Columns.Add("Marque", 0, HorizontalAlignment.Center);
-            ListView.Columns.Add("Prix(HT)", 0, HorizontalAlignment.Center);
-            ListView.Columns.Add("Quantite", 0, HorizontalAlignment.Center);
+            ListView.Columns.Add("Description", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Famille", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("SousFamille", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Marque", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Prix(H.T.)", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Quantité", 0, HorizontalAlignment.Left);
 
-            //Auto Resize columns by Column entry Content value &/or column name 
+            //Auto Resize columns by Column entry Content value &/or column name (if empty)
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             ListView.EndUpdate();
         }
         /// <summary>
-        /// Adds Familles Data to ListView
+        /// Adds Familles Data & Table structure to ListView 
         /// </summary>
-        public void ShowFamillesList()
+        public void ShowFamilles()
         {
             ListView.BeginUpdate();
             ListView.Clear();
@@ -76,18 +71,18 @@ namespace Bacchus.Controller
             }
 
             // Add columns names for every Attribute 
-            ListView.Columns.Add("Description", 0, HorizontalAlignment.Center);
+            ListView.Columns.Add("Description", 0, HorizontalAlignment.Left);
 
-            //Auto Resize columns by Column entry Content value &/or column name 
+            //Auto Resize columns by Column entry Content value &/or column name (if empty)
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             ListView.EndUpdate();
         }
         /// <summary>
-        /// Adds Marques Data to ListView
+        /// Adds Marques Data & Table structure to ListView 
         /// </summary>
-        public void ShowMarquesList()
+        public void ShowMarques()
         {
             ListView.BeginUpdate();
             ListView.Clear();
@@ -98,19 +93,19 @@ namespace Bacchus.Controller
             }
 
             // Add columns names for every Attribute 
-            ListView.Columns.Add("Description", 0, HorizontalAlignment.Center);
-            //Auto Resize columns by Column entry Content value &/or column name 
+            ListView.Columns.Add("Description", 0, HorizontalAlignment.Left);
 
+            //Auto Resize columns by Column entry Content value &/or column name (if empty)
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             ListView.EndUpdate();
         }
         /// <summary>
-        /// Adds SousFamille of the selected Famille Data to ListView
+        /// Adds SousFamille of the selected Famille & Table structure to ListView 
         /// </summary>
         /// <param name="Famille">Famille Name</param>
-        public void ShowSousFamillesListByFamille(string Famille)
+        public void ShowSousFamillesByFamille(string Famille)
         {
             ListView.BeginUpdate();
             ListView.Clear();
@@ -123,16 +118,20 @@ namespace Bacchus.Controller
                 }
             }
             // Add columns names for every Attribute 
-            ListView.Columns.Add("Description", 0, HorizontalAlignment.Center);
-            //Auto Resize columns by Column entry Content value &/or column name 
+            ListView.Columns.Add("Description", 0, HorizontalAlignment.Left);
 
+
+            //Auto Resize columns by Column entry Content value &/or column name (if empty)
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             ListView.EndUpdate();
         }
-
-        public void ShowArticlesListByMarque(string Marque)
+        /// <summary>
+        /// Adds Articles of the selected Marque & Table structure to ListView 
+        /// </summary>
+        /// <param name="Marque"></param>
+        public void ShowArticlesByMarque(string Marque)
         {
             ListView.BeginUpdate();
             ListView.Clear();
@@ -141,27 +140,32 @@ namespace Bacchus.Controller
             {
                 if (Article.Marque.Name.Equals(Marque) || Article.SousFamille.Famille.Name.Equals(Marque) || Article.SousFamille.Name.Equals(Marque))
                 {
-                    ListViewItem Item = new ListViewItem(new string[]  { Article.Description,
-                    Article.SousFamille.Famille.Name,
-                    Article.SousFamille.Name,
-                    Article.Marque.Name,
-                    Article.Prix + "",
-                    Article.Quantite + "",
-                    Article.RefArticle });
+                    ListViewItem Item = new ListViewItem(
+                        new string[]  
+                        { 
+                            Article.Description,
+                            Article.SousFamille.Famille.Name,
+                            Article.SousFamille.Name,
+                            Article.Marque.Name,
+                            Article.Prix + "",
+                            Article.Quantite + "",
+                            Article.RefArticle 
+                        }
+                        );
 
                     ListView.Items.Add(Item);
 
                 }
             }
             // Add columns names for every Attribute 
-            ListView.Columns.Add("Description", -2, HorizontalAlignment.Center);
-            ListView.Columns.Add("Famille", -2, HorizontalAlignment.Center);
-            ListView.Columns.Add("SousFamille", -2, HorizontalAlignment.Center);
-            ListView.Columns.Add("Marque", -2, HorizontalAlignment.Center);
-            ListView.Columns.Add("PrixHT", -2, HorizontalAlignment.Center);
-            ListView.Columns.Add("Quantite", -2, HorizontalAlignment.Center);
-            //Auto Resize columns by Column entry Content value &/or column name 
+            ListView.Columns.Add("Description", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Famille", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("SousFamille", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Marque", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Prix(H.T.)", 0, HorizontalAlignment.Left);
+            ListView.Columns.Add("Quantité", 0, HorizontalAlignment.Left);
 
+            //Auto Resize columns by Column entry Content value &/or column name (if empty)
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
