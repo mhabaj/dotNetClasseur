@@ -13,9 +13,7 @@ D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchu
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.csprojAssemblyReference.cache
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.FormArticle.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.FormSousFamille.resources
-D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.FormExport.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.FormFamille.resources
-D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.FormImport.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.FormMain.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.FormMarque.resources
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.Properties.Resources.resources
@@ -24,3 +22,5 @@ D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchu
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.csproj.CopyComplete
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.exe
 D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.pdb
+D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.ExportDialogue.resources
+D:\Drive\Backup\backupUSB2GoNoir\FAC\4emeAnneePolytech\S8\.Net\TP\Bacchus\Bacchus\dotNetClasseur\obj\Release\Bacchus.ImportDialogue.resources
